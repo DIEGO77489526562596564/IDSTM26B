@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -27,11 +29,17 @@ public class Ventana extends JFrame{
 		this.setLocationRelativeTo(null);
 		this.setMinimumSize(new Dimension(200,200));
 		this.setMaximumSize(new Dimension(800,800));
-		this.setTitle("Hola");
+		this.setTitle("Mi ventana");
 		this.setBackground(Color.BLACK);
+		this.getContentPane().setBackground(Color.decode("#5CF2A0"));
 		//this.setLocation(500, 200);
 		this.setLayout(null);
 		
+		this.users();
+
+	}
+	
+	public void login () {
 		JPanel contenedor = new JPanel();
 		contenedor.setOpaque(true);
 		contenedor.setBackground(Color.gray);
@@ -112,9 +120,9 @@ public class Ventana extends JFrame{
 		
 		contenedor.repaint();
 		contenedor.revalidate();
-		
-		//contenedor para el registro
-		
+	}
+	
+	public void registro() {
 		JPanel register_container = new JPanel();
 		register_container.setSize(500, 700);
 		register_container.setLocation(600, 0);
@@ -227,8 +235,72 @@ public class Ventana extends JFrame{
 		register_container.add(crear_cuenta);
 		
 		register_container.repaint();
-		
-			
 	}
+	
+	public void users() {
+		JPanel users = new JPanel();
+		users.setSize(1000, 500);
+		users.setLocation(70, 50);
+		users.setBackground(Color.white);
+		users.setLayout(null);
+		this.add(users);
+		
+		JLabel users_title = new JLabel("USUARIOS");
+		users_title.setBounds(450, 40, 200, 40);
+		users_title.setOpaque(true);
+		users_title.setBackground(Color.white);
+		users_title.setHorizontalAlignment(JLabel.CENTER);
+		users_title.setFont(new Font("Arial", Font.BOLD, 22));
+		users.add(users_title);
+		
+		JButton export = new JButton("Exportar");
+		export.setBounds(50, 90, 100, 40);
+		users.add(export);
+		
+		JButton add = new JButton("Añadir");
+		add.setBounds(155, 90,100, 40);
+		users.add(add);
+		
+		Object [] table_head = {"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"};
+		
+		Object [][] table_content = {
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
+			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"}
+		};
+		
+		JTable users_table = new JTable(table_content, table_head);
+		JScrollPane scrollPane = new JScrollPane(users_table);
+		
+		scrollPane.setLocation(50, 150);
+		scrollPane.setSize(800, 240);
+		users.add(scrollPane);
+		
+		
+		users.repaint();
+	}
+	
 
 }
