@@ -11,6 +11,9 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -35,8 +38,37 @@ public class Ventana extends JFrame{
 		//this.setLocation(500, 200);
 		this.setLayout(null);
 		
+		JMenuBar barra = new JMenuBar();
+		JMenu archivo = new JMenu("Archivo");
+		
+		JMenuItem open = new JMenuItem("Abrir");
+		JMenuItem close = new JMenuItem("Cerrar");
+		JMenuItem save = new JMenuItem("Guardar");
+		JMenuItem newFile = new JMenuItem("Nuevo");
+		archivo.add(open);
+		archivo.add(close);
+		archivo.add(save);
+		archivo.add(newFile);
+		
+		barra.add(archivo);
+		
+		
+		JMenu submenu = new JMenu("Otros");
+		archivo.addSeparator();
+		
+		JMenuItem menuItem = new JMenuItem("GG te fuite");
+		submenu.add(menuItem);
+		menuItem = new JMenuItem("GG no te fuiste");
+		submenu.add(menuItem);
+		
+		archivo.add(submenu);
+		
+		this.setJMenuBar(barra);
+		
 		this.users();
-
+		this.repaint();
+		this.revalidate();
+		
 	}
 	
 	public void login () {
@@ -240,7 +272,7 @@ public class Ventana extends JFrame{
 	public void users() {
 		JPanel users = new JPanel();
 		users.setSize(1000, 500);
-		users.setLocation(70, 50);
+		users.setLocation(70, 30);
 		users.setBackground(Color.white);
 		users.setLayout(null);
 		this.add(users);
@@ -264,32 +296,32 @@ public class Ventana extends JFrame{
 		Object [] table_head = {"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"};
 		
 		Object [][] table_content = {
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"},
-			{"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"}
-		};
+			    {"22150001", "Carlos", "Ramírez", "1", "8.5", "Editar"},
+			    {"22150002", "María", "López", "2", "9.1", "Editar"},
+			    {"22150003", "José", "Hernández", "3", "7.8", "Editar"},
+			    {"22150004", "Ana", "García", "4", "9.5", "Editar"},
+			    {"22150005", "Luis", "Martínez", "5", "8.2", "Editar"},
+			    {"22150006", "Fernanda", "Sánchez", "6", "9.0", "Editar"},
+			    {"22150007", "Miguel", "Torres", "1", "7.5", "Editar"},
+			    {"22150008", "Daniela", "Flores", "2", "8.9", "Editar"},
+			    {"22150009", "Jorge", "Castillo", "3", "6.8", "Editar"},
+			    {"22150010", "Valeria", "Morales", "4", "9.7", "Editar"},
+			    {"22150011", "Ricardo", "Ortiz", "5", "8.0", "Editar"},
+			    {"22150012", "Paola", "Reyes", "6", "9.3", "Editar"},
+			    {"22150013", "Alejandro", "Cruz", "1", "7.9", "Editar"},
+			    {"22150014", "Sofía", "Vargas", "2", "8.6", "Editar"},
+			    {"22150015", "David", "Mendoza", "3", "8.4", "Editar"},
+			    {"22150016", "Camila", "Rojas", "4", "9.2", "Editar"},
+			    {"22150017", "Emmanuel", "Navarro", "5", "7.3", "Editar"},
+			    {"22150018", "Andrea", "Delgado", "6", "9.8", "Editar"},
+			    {"22150019", "Hugo", "Paredes", "1", "6.9", "Editar"},
+			    {"22150020", "Lucía", "Silva", "2", "8.7", "Editar"},
+			    {"22150021", "Brandon", "Campos", "3", "7.6", "Editar"},
+			    {"22150022", "Natalia", "Peña", "4", "9.4", "Editar"},
+			    {"22150023", "Kevin", "Aguilar", "5", "8.1", "Editar"},
+			    {"22150024", "Renata", "Fuentes", "6", "9.6", "Editar"},
+			    {"22150025", "Iván", "Salazar", "1", "7.2", "Editar"}
+			};
 		
 		JTable users_table = new JTable(table_content, table_head);
 		JScrollPane scrollPane = new JScrollPane(users_table);
@@ -297,6 +329,7 @@ public class Ventana extends JFrame{
 		scrollPane.setLocation(50, 150);
 		scrollPane.setSize(800, 240);
 		users.add(scrollPane);
+		
 		
 		
 		users.repaint();
