@@ -3,6 +3,7 @@ package Main;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -21,11 +22,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
 
 public class Ventana extends JFrame{
 	
 	public Ventana() {
-		
+				
 		this.setVisible(true);
 		this.setSize(1150, 600);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,9 +36,10 @@ public class Ventana extends JFrame{
 		this.setMaximumSize(new Dimension(800,800));
 		this.setTitle("Mi ventana");
 		this.setBackground(Color.BLACK);
-		this.getContentPane().setBackground(Color.decode("#5CF2A0"));
+		this.getContentPane().setBackground(Color.decode("#03579E"));
 		//this.setLocation(500, 200);
 		this.setLayout(null);
+		
 		
 		JMenuBar barra = new JMenuBar();
 		JMenu archivo = new JMenu("Archivo");
@@ -56,16 +59,18 @@ public class Ventana extends JFrame{
 		JMenu submenu = new JMenu("Otros");
 		archivo.addSeparator();
 		
-		JMenuItem menuItem = new JMenuItem("GG te fuite");
+		JMenuItem menuItem = new JMenuItem("An otem in the submenu");
 		submenu.add(menuItem);
-		menuItem = new JMenuItem("GG no te fuiste");
+		menuItem = new JMenuItem("Another item");
 		submenu.add(menuItem);
 		
 		archivo.add(submenu);
 		
 		this.setJMenuBar(barra);
+				
 		
-		this.users();
+		//this.users();
+		this.newlogin();
 		this.repaint();
 		this.revalidate();
 		
@@ -334,6 +339,110 @@ public class Ventana extends JFrame{
 		
 		users.repaint();
 	}
+	
+	public void newlogin() {
+		    JPanel login2 = new JPanel();
+		    login2.setSize(1150, 600);
+		    login2.setLocation(0, 0);
+		    login2.setLayout(null);
+		    this.add(login2);
+		    
+		    JButton crear_cuenta = new JButton("Registrarse");
+		    crear_cuenta.setLocation(500, 480);
+		    crear_cuenta.setSize(140, 50);
+		    crear_cuenta.setFont(new Font("Tahoma",Font.BOLD,22));
+		    crear_cuenta.setBorderPainted(true);
+		    crear_cuenta.setBorder(BorderFactory.createLineBorder(Color.white));
+		    crear_cuenta.setBackground(Color.decode("#E6BB09"));
+		    crear_cuenta.setHorizontalAlignment(JLabel.CENTER);
+		    login2.add(crear_cuenta);
+
+		    ImageIcon fondo = new ImageIcon("fondo5.jpg");
+		    JLabel fondoazul = new JLabel();
+		    fondoazul.setBounds(0, 0, 1150, 600);
+		    fondoazul.setIcon(new ImageIcon(fondo.getImage().getScaledInstance(1150, 600, Image.SCALE_SMOOTH)));
+		    login2.add(fondoazul);
+
+		    login2.setComponentZOrder(fondoazul, login2.getComponentCount()-1);
+
+		    JPanel cuadroLogin = new JPanel();
+		    cuadroLogin.setBounds(280, 80, 600, 350);
+		    cuadroLogin.setBackground(Color.decode("#0B1F47"));
+		    cuadroLogin.setBorder(BorderFactory.createLineBorder(Color.white));
+		    cuadroLogin.setLayout(null);
+		    fondoazul.add(cuadroLogin);
+
+		    JLabel user_login = new JLabel("USER LOGIN");
+		    user_login.setBounds(480, 20, 250, 40);
+		    user_login.setForeground(Color.white);
+		    user_login.setFont(new Font("Tahoma",Font.ITALIC | Font.BOLD, 28));
+		    fondoazul.add(user_login);
+		    
+		    JLabel users_title = new JLabel("Mi Cuenta");
+		    users_title.setBounds(220, 20, 250, 40);
+		    users_title.setForeground(Color.decode("#E6BB09"));
+		    users_title.setFont(new Font("Tahoma", Font.BOLD, 28));
+		    cuadroLogin.add(users_title);
+		    
+		    JLabel name = new JLabel("Ingresa tu nombre");
+		    name.setBounds(100, 70, 400, 40);
+		    name.setForeground(Color.white);
+		    name.setFont(new Font("Tahoma", Font.BOLD, 20));
+		    cuadroLogin.add(name);
+		    
+		    JTextField ingresar_nombre = new JTextField();
+		    ingresar_nombre.setSize(350, 30);
+		    ingresar_nombre.setLocation(100, 120);
+		    ingresar_nombre.setFont(new Font("Arial",Font.BOLD,18));
+		    cuadroLogin.add(ingresar_nombre);
+		    
+		    JLabel contra = new JLabel("Ingresa tu contraseña");
+		    contra.setBounds(100, 180, 400, 40);
+		    contra.setForeground(Color.white);
+		    contra.setFont(new Font("Tahoma", Font.BOLD, 20));
+		    cuadroLogin.add(contra);
+		    
+		    JPasswordField ingresar_contra = new JPasswordField();
+		    ingresar_contra.setSize(350, 30);
+		    ingresar_contra.setLocation(100, 230);
+		    ingresar_contra.setFont(new Font("Arial",Font.BOLD,18));
+		    cuadroLogin.add(ingresar_contra);
+		    
+		    JButton login = new JButton("Login");
+		    login.setLocation(250, 280);
+		    login.setSize(80, 40);
+		    login.setFont(new Font("Tahoma",Font.BOLD,25));
+		    login.setBorderPainted(true);
+		    login.setBorder(BorderFactory.createLineBorder(Color.white));
+		    login.setBackground(Color.decode("#E6BB09"));
+		    //login.setForeground(Color.white);
+		    login.setHorizontalAlignment(JLabel.CENTER);
+		    cuadroLogin.add(login);
+		    
+		    ImageIcon usuario = new ImageIcon("usuario.jpg");
+		    JLabel usaurio_login = new JLabel();
+		    usaurio_login.setBounds(40, 100, 50, 50);
+		    usaurio_login.setIcon(new ImageIcon(usuario.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
+		    cuadroLogin.add(usaurio_login);
+		    
+		    ImageIcon contraImage = new ImageIcon("contra.jpg");
+		    JLabel usaurio_contra = new JLabel();
+		    usaurio_contra.setBounds(40, 210, 50, 50);
+		    usaurio_contra.setIcon(new ImageIcon(contraImage.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
+		    cuadroLogin.add(usaurio_contra);
+		    
+		    JLabel noaccount = new JLabel("¿No tienes cuenta?");
+		    noaccount.setBounds(490, 310, 500, 290);
+		    noaccount.setForeground(Color.white);
+		    noaccount.setFont(new Font("Tahoma", Font.BOLD, 17));
+		    fondoazul.add(noaccount);
+		    
+		    
+
+			this.repaint();
+			this.revalidate();
+	}
+	
 	
 
 }
