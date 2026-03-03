@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -24,7 +27,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 
-public class Ventana extends JFrame{
+
+public class Ventana extends JFrame implements ActionListener{
 	
 	public Ventana() {
 				
@@ -354,7 +358,28 @@ public class Ventana extends JFrame{
 		    crear_cuenta.setBorderPainted(true);
 		    crear_cuenta.setBorder(BorderFactory.createLineBorder(Color.white));
 		    crear_cuenta.setBackground(Color.decode("#E6BB09"));
+		    crear_cuenta.setForeground(Color.black);
 		    crear_cuenta.setHorizontalAlignment(JLabel.CENTER);
+		    crear_cuenta.addActionListener(this);
+		    crear_cuenta.addMouseListener (new java.awt.event.MouseAdapter() {
+
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					// TODO Auto-generated method stub
+					crear_cuenta.setBackground(Color.decode("#B8860B"));
+					crear_cuenta.setForeground(Color.white);
+					super.mouseEntered(e);
+				}
+
+				@Override
+				public void mouseExited(MouseEvent e) {
+					// TODO Auto-generated method stub
+					crear_cuenta.setBackground(Color.decode("#E6BB09"));
+					crear_cuenta.setForeground(Color.black);
+					super.mouseExited(e);
+				}
+		    	
+		    });
 		    login2.add(crear_cuenta);
 
 		    ImageIcon fondo = new ImageIcon("fondo5.jpg");
@@ -408,15 +433,37 @@ public class Ventana extends JFrame{
 		    ingresar_contra.setFont(new Font("Arial",Font.BOLD,18));
 		    cuadroLogin.add(ingresar_contra);
 		    
-		    JButton login = new JButton("Login");
+		    JButton login;
+		    
+		    login = new JButton("Login");
 		    login.setLocation(250, 280);
 		    login.setSize(80, 40);
 		    login.setFont(new Font("Tahoma",Font.BOLD,25));
 		    login.setBorderPainted(true);
 		    login.setBorder(BorderFactory.createLineBorder(Color.white));
 		    login.setBackground(Color.decode("#E6BB09"));
-		    //login.setForeground(Color.white);
+		    login.setForeground(Color.black);
 		    login.setHorizontalAlignment(JLabel.CENTER);
+		    login.addActionListener(this);
+		    login.addMouseListener (new java.awt.event.MouseAdapter() {
+
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					// TODO Auto-generated method stub
+					login.setBackground(Color.decode("#B8860B"));
+					login.setForeground(Color.white);
+					super.mouseEntered(e);
+				}
+
+				@Override
+				public void mouseExited(MouseEvent e) {
+					// TODO Auto-generated method stub
+					login.setBackground(Color.decode("#E6BB09"));
+					login.setForeground(Color.black);
+					super.mouseExited(e);
+				}
+		    	
+		    });
 		    cuadroLogin.add(login);
 		    
 		    ImageIcon usuario = new ImageIcon("usuario.jpg");
@@ -441,6 +488,12 @@ public class Ventana extends JFrame{
 
 			this.repaint();
 			this.revalidate();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
