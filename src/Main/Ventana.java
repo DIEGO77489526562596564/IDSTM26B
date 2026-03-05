@@ -1,8 +1,11 @@
 package Main;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,7 +36,7 @@ public class Ventana extends JFrame implements ActionListener{
 	public Ventana() {
 				
 		this.setVisible(true);
-		this.setSize(1150, 600);
+		this.setSize(1150, 700);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setMinimumSize(new Dimension(200,200));
@@ -74,7 +77,8 @@ public class Ventana extends JFrame implements ActionListener{
 				
 		
 		//this.users();
-		this.newlogin();
+		//this.newlogin();
+		this.calculadora();
 		this.repaint();
 		this.revalidate();
 		
@@ -496,6 +500,82 @@ public class Ventana extends JFrame implements ActionListener{
 		
 	}
 	
+	public void calculadora() {
+
+	    JPanel calculadora = new JPanel();
+	    calculadora.setSize(600, 450);
+	    calculadora.setLocation(270, 60);
+	    calculadora.setBackground(Color.white);
+	    calculadora.setLayout(new BorderLayout(0, 0)); 
+	    this.add(calculadora);
+	    
+	    JPanel panelSuperior = new JPanel();
+	    panelSuperior.setLayout(new GridLayout(2,1));
+
+	    JTextField barranum = new JTextField("100");
+	    barranum.setFont(new Font("Arial", Font.BOLD, 40));
+	    barranum.setBorder(BorderFactory.createLineBorder(Color.black));
+	    barranum.setHorizontalAlignment(JTextField.RIGHT);
+
+	    panelSuperior.add(barranum);
+
+	    JPanel memoria = new JPanel();
+	    memoria.setLayout(new FlowLayout(0, 50, 10));
+	    memoria.setBackground(Color.red);
+
+	    JButton mc = new JButton("    MC    ");
+	    mc.setFont(new Font("Arial", Font.BOLD, 20));
+
+	    JButton mp = new JButton("    M+    ");
+	    mp.setFont(new Font("Arial", Font.BOLD, 20));
+
+	    JButton div = new JButton("    /    ");
+	    div.setFont(new Font("Arial", Font.BOLD, 20));
+
+	    JButton mult = new JButton("    *    ");
+	    mult.setFont(new Font("Arial", Font.BOLD, 20));
+
+	    memoria.add(mc);
+	    memoria.add(mp);
+	    memoria.add(div);
+	    memoria.add(mult);
+
+	    panelSuperior.add(memoria);
+
+	    calculadora.add(panelSuperior, BorderLayout.NORTH);
+	    
+	    JPanel center_cal = new JPanel();
+	    center_cal.setBackground(Color.yellow);
+	    center_cal.setLayout(new GridLayout(4, 3, 5, 5));
+
+	    center_cal.add(new JButton("7"));
+	    center_cal.add(new JButton("8"));
+	    center_cal.add(new JButton("9"));
+	    center_cal.add(new JButton("4"));
+	    center_cal.add(new JButton("5"));
+	    center_cal.add(new JButton("6"));
+	    center_cal.add(new JButton("1"));
+	    center_cal.add(new JButton("2"));
+	    center_cal.add(new JButton("3"));
+	    center_cal.add(new JButton("0"));
+	    center_cal.add(new JButton("."));
+	    center_cal.add(new JButton("/"));
+
+	    calculadora.add(center_cal, BorderLayout.CENTER);
+
+	    JPanel signos = new JPanel();
+	    signos.setBackground(Color.black);
+	    signos.setLayout(new GridLayout(4, 1, 5, 5));
+
+	    signos.add(new JButton("X"));
+	    signos.add(new JButton("+"));
+	    signos.add(new JButton("-"));
+	    signos.add(new JButton("="));
+
+	    calculadora.add(signos, BorderLayout.EAST);
+	    
+	    
+	}
 	
 
 }
