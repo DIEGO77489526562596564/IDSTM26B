@@ -78,7 +78,8 @@ public class Ventana extends JFrame implements ActionListener{
 		
 		//this.users();
 		//this.newlogin();
-		this.calculadora();
+		//this.calculadora();
+		this.CalculadoraIntereses();;
 		this.repaint();
 		this.revalidate();
 		
@@ -577,5 +578,105 @@ public class Ventana extends JFrame implements ActionListener{
 	    
 	}
 	
+	public void CalculadoraIntereses() {
 
+	    JPanel calculadora = new JPanel();
+	    calculadora.setSize(1000, 500);
+	    calculadora.setLocation(100, 50);
+	    calculadora.setBackground(Color.white);
+	    calculadora.setLayout(new BorderLayout(20,20));
+	    this.add(calculadora);
+
+
+	    JLabel title = new JLabel("INTERÉS");
+	    title.setFont(new Font("Arial", Font.BOLD, 26));
+	    title.setForeground(Color.red);
+	    title.setHorizontalAlignment(JLabel.CENTER);
+	    calculadora.add(title, BorderLayout.NORTH);
+
+	    
+	    JPanel datos = new JPanel();
+	    datos.setBackground(new Color(120,230,100));
+	    datos.setLayout(new BorderLayout(10,10));
+
+	    calculadora.add(datos, BorderLayout.CENTER);
+
+	    JLabel subtitulo = new JLabel("Calcular interés");
+	    subtitulo.setFont(new Font("Arial", Font.BOLD, 20));
+
+	    datos.add(subtitulo, BorderLayout.NORTH);
+
+
+	    JPanel campos = new JPanel();
+	    campos.setLayout(new GridLayout(3,2,20,20));
+	    campos.setOpaque(false);
+
+	    JLabel l1 = new JLabel("Capital:");
+	    l1.setFont(new Font("Arial", Font.BOLD, 16));
+
+	    JTextField capital = new JTextField();
+	    capital.setFont(new Font("Arial", Font.PLAIN, 16));
+
+	    JLabel l2 = new JLabel("Tiempo:");
+	    l2.setFont(new Font("Arial", Font.BOLD, 16));
+
+	    JTextField tiempo = new JTextField();
+	    tiempo.setFont(new Font("Arial", Font.PLAIN, 16));
+
+	    JLabel l3 = new JLabel("Tasa interés:");
+	    l3.setFont(new Font("Arial", Font.BOLD, 16));
+
+	    JTextField tasa = new JTextField();
+	    tasa.setFont(new Font("Arial", Font.PLAIN, 16));
+
+	    campos.add(l1);
+	    campos.add(capital);
+
+	    campos.add(l2);
+	    campos.add(tiempo);
+
+	    campos.add(l3);
+	    campos.add(tasa);
+
+	    datos.add(campos, BorderLayout.CENTER);
+
+
+	    JPanel botones = new JPanel(new FlowLayout());
+	    botones.setOpaque(false);
+
+	    JButton calcular = new JButton("Calcular");
+	    JButton cancelar = new JButton("Cancelar");
+
+	    botones.add(calcular);
+	    botones.add(cancelar);
+
+	    datos.add(botones, BorderLayout.SOUTH);
+
+	    JPanel resultados = new JPanel();
+	    resultados.setLayout(new GridLayout(2,2,20,10));
+	    resultados.setBackground(new Color(240,120,110));
+
+	    JLabel r1 = new JLabel("Interés:");
+	    r1.setFont(new Font("Arial", Font.BOLD, 16));
+
+	    JTextField interes = new JTextField();
+	    interes.setEditable(false);
+
+	    JLabel r2 = new JLabel("Monto:");
+	    r2.setFont(new Font("Arial", Font.BOLD, 16));
+
+	    JTextField monto = new JTextField();
+	    monto.setEditable(false);
+
+	    resultados.add(r1);
+	    resultados.add(interes);
+
+	    resultados.add(r2);
+	    resultados.add(monto);
+
+	    calculadora.add(resultados, BorderLayout.SOUTH);
+
+	    setVisible(true);
+	}
+	
 }
