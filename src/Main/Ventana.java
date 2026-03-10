@@ -74,12 +74,26 @@ public class Ventana extends JFrame implements ActionListener{
 		archivo.add(submenu);
 		
 		this.setJMenuBar(barra);
-				
+		
+		ImageIcon logo_ventana = new ImageIcon("logoventana.jpg");
+		setIconImage(logo_ventana.getImage());
+		
+		ImageIcon imagen = new ImageIcon("logoventana.jpg");
+		JLabel labelImagen = new JLabel(imagen);
+		labelImagen.setBounds(420,15,50,50);
+		labelImagen.setIcon(new ImageIcon(imagen.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
+		this.add(labelImagen);
+		
+		ImageIcon imagen2 = new ImageIcon("logoventana.jpg");
+		JLabel labelImagen2 = new JLabel(imagen2);
+		labelImagen2.setBounds(670,15,50,50);
+		labelImagen2.setIcon(new ImageIcon(imagen2.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
+		this.add(labelImagen2);		
 		
 		//this.users();
-		//this.newlogin();
+		this.newlogin();
 		//this.calculadora();
-		this.CalculadoraIntereses();;
+		//this.CalculadoraIntereses();;
 		this.repaint();
 		this.revalidate();
 		
