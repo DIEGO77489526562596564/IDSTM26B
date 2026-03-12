@@ -1,16 +1,23 @@
 package Main;
 
+import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -36,7 +43,7 @@ public class Ventana extends JFrame implements ActionListener{
 	public Ventana() {
 				
 		this.setVisible(true);
-		this.setSize(1150, 700);
+		this.setSize(1200,700);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setMinimumSize(new Dimension(200,200));
@@ -75,7 +82,7 @@ public class Ventana extends JFrame implements ActionListener{
 		
 		this.setJMenuBar(barra);
 		
-		ImageIcon logo_ventana = new ImageIcon("logoventana.jpg");
+		/*ImageIcon logo_ventana = new ImageIcon("logoventana.jpg");
 		setIconImage(logo_ventana.getImage());
 		
 		ImageIcon imagen = new ImageIcon("logoventana.jpg");
@@ -88,12 +95,13 @@ public class Ventana extends JFrame implements ActionListener{
 		JLabel labelImagen2 = new JLabel(imagen2);
 		labelImagen2.setBounds(670,15,50,50);
 		labelImagen2.setIcon(new ImageIcon(imagen2.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
-		this.add(labelImagen2);		
+		this.add(labelImagen2);	*/	
 		
 		//this.users();
-		this.newlogin();
+		//this.newlogin();
 		//this.calculadora();
 		//this.CalculadoraIntereses();;
+		pintar();
 		this.repaint();
 		this.revalidate();
 		
@@ -693,4 +701,56 @@ public class Ventana extends JFrame implements ActionListener{
 	    setVisible(true);
 	}
 	
+	public void pintar() {
+		
+		JPanel pane = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2d = (Graphics2D) g;
+                
+                g2d.drawLine(0,0,100,100);
+                
+                g2d.setStroke(new BasicStroke(3));
+                g2d.setColor(Color.red);
+                
+                g2d.drawLine(200,  200,  500, 200);
+                
+                g2d.drawRect(250, 250, 100, 100);
+                
+                g2d.setColor(Color.green);
+                
+                g2d.drawOval(400, 100, 90, 30);
+                
+                g2d.setStroke(new BasicStroke(5));
+                
+                g2d.drawArc(300, 100, 100, 100, 0, 270);
+                
+                g2d.drawPolygon(new int [] {200,100,300},new int [] {100,300,500},3);
+                
+                g2d.setColor(Color.orange);
+                
+                g2d.fillRect(500,  300, 100, 100);
+                
+                g2d.fillOval(400, 200, 100, 100);
+                
+                g2d.fillArc(300, 300, 100, 100, 90, 90);
+                
+                g2d.fillPolygon(new int [] {400,300,500},new int [] {200,300,500},3);
+                
+                try {
+					BufferedImage image = ImageIO.read(new File ("src/imagenes/pacman.png"));
+					g2d.drawImage(image, 500, 9, null);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            
+            }
+        };
+
+       pane.setSize(1200,700);
+       pane.setLocation(0,0);
+       this.add(pane);
+	}
 }
