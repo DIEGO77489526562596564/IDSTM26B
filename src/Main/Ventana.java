@@ -99,10 +99,12 @@ public class Ventana extends JFrame implements ActionListener{
 		
 		//this.users();
 		//this.newlogin();
+		this.login();	
+		this.registro();
 		//this.calculadora();
 		//this.CalculadoraIntereses();;
 		//pintar();
-		casa();
+		//casa();
 		this.repaint();
 		this.revalidate();
 		
@@ -141,6 +143,36 @@ public class Ventana extends JFrame implements ActionListener{
 		acceder.setFont(new Font("Arial",Font.BOLD,22));
 		contenedor.add(acceder);
 		
+		JPasswordField contra = new JPasswordField();
+		contra.setSize(350, 30);
+		contra.setLocation(30, 220);
+		contra.setFont(new Font("Arial", Font.BOLD, 18));
+		contenedor.add(contra);
+		
+		acceder.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String username_val = username.getText();
+				String contra_val = contra.getText();
+				
+				if(username_val.equals("")) {
+					username.setBorder(BorderFactory.createLineBorder(Color.red,3,true));
+				} else {
+					username.setBorder(BorderFactory.createLineBorder(Color.green,3,true));
+				}
+				
+				if (contra_val.equals("")) {
+					contra.setBorder(BorderFactory.createLineBorder(Color.red,3,true));
+				} else {
+					contra.setBorder(BorderFactory.createLineBorder(Color.green,3,true));
+				}
+				
+				
+				
+			}
+		});
+		
 		JLabel usuario = new JLabel();
 		usuario.setText("NOMBRE DE USUARIO:");
 		usuario.setSize(250, 30);
@@ -163,11 +195,6 @@ public class Ventana extends JFrame implements ActionListener{
 		contraseña.setHorizontalAlignment(JLabel.CENTER);
 		contenedor.add(contraseña);
 		
-		JPasswordField contra = new JPasswordField();
-		contra.setSize(350, 30);
-		contra.setLocation(30, 220);
-		contra.setFont(new Font("Arial", Font.BOLD, 18));
-		contenedor.add(contra);
 		
 		JCheckBox recordarme = new JCheckBox();
 		recordarme.setText("Recordarme");
@@ -302,6 +329,29 @@ public class Ventana extends JFrame implements ActionListener{
 		crear_cuenta.setSize(165, 50);
 		crear_cuenta.setFont(new Font("Arial",Font.BOLD,20));
 		register_container.add(crear_cuenta);
+		
+		crear_cuenta.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String username_val = user_nombre.getText();
+				String bio_val = bio.getText();
+				
+				if(username_val.equals("")) {
+					user_nombre.setBorder(BorderFactory.createLineBorder(Color.red,3,true));
+				} else {
+					user_nombre.setBorder(BorderFactory.createLineBorder(Color.green,3,true));
+				}
+				
+				if (bio_val.equals("")) {
+					bio.setBorder(BorderFactory.createLineBorder(Color.red,3,true));
+				} else {
+					bio.setBorder(BorderFactory.createLineBorder(Color.green,3,true));
+				}
+				
+			}
+			
+		});
 		
 		register_container.repaint();
 	}
