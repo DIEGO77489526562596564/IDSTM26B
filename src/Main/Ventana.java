@@ -28,6 +28,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -154,7 +155,10 @@ public class Ventana extends JFrame implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String username_val = username.getText();
-				String contra_val = contra.getText();
+				String contra_val = new String (contra.getPassword());
+				
+				String user_correct = "Diego Romero";
+				String contra_correct = "1206";
 				
 				if(username_val.equals("")) {
 					username.setBorder(BorderFactory.createLineBorder(Color.red,3,true));
@@ -166,6 +170,12 @@ public class Ventana extends JFrame implements ActionListener{
 					contra.setBorder(BorderFactory.createLineBorder(Color.red,3,true));
 				} else {
 					contra.setBorder(BorderFactory.createLineBorder(Color.green,3,true));
+				}
+				
+				if (username_val.equals(user_correct) && contra_val.equals(contra_correct)) {
+					JOptionPane.showMessageDialog(null, "Bienvenido " + username_val);
+				} else {
+					JOptionPane.showMessageDialog(null, "Error al iniciar sesión!");
 				}
 				
 				
