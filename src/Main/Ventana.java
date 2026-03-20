@@ -58,6 +58,7 @@ public class Ventana extends JFrame implements ActionListener{
 		
 		JMenuBar barra = new JMenuBar();
 		JMenu archivo = new JMenu("Archivo");
+		JMenu cuenta = new JMenu("Cuenta");
 		
 		JMenuItem open = new JMenuItem("Abrir");
 		JMenuItem close = new JMenuItem("Cerrar");
@@ -68,7 +69,22 @@ public class Ventana extends JFrame implements ActionListener{
 		archivo.add(save);
 		archivo.add(newFile);
 		
+		JMenuItem acceder = new JMenuItem("Acceder");
+		JMenuItem registrarse = new JMenuItem("Registrarse");
+		cuenta.add(acceder);
+		cuenta.add(registrarse);
+		
+		acceder.addActionListener(e -> {
+			this.router("login");
+		});
+		
+		registrarse.addActionListener(e -> {
+			this.router("registro");
+		});
+		
+		
 		barra.add(archivo);
+		barra.add(cuenta);
 		
 		
 		JMenu submenu = new JMenu("Otros");
@@ -101,11 +117,13 @@ public class Ventana extends JFrame implements ActionListener{
 		//this.users();
 		//this.newlogin();
 		this.login();	
-		this.registro();
+		//this.registro();
 		//this.calculadora();
 		//this.CalculadoraIntereses();;
 		//pintar();
 		//casa();
+		
+		
 		this.repaint();
 		this.revalidate();
 		
@@ -115,8 +133,8 @@ public class Ventana extends JFrame implements ActionListener{
 		JPanel contenedor = new JPanel();
 		contenedor.setOpaque(true);
 		contenedor.setBackground(Color.gray);
-		contenedor.setSize(500, 700);
-		contenedor.setLocation(0, 0);
+		contenedor.setSize(1160, 610);
+		contenedor.setLocation(10, 10);
 		contenedor.setLayout(null);
 		this.add(contenedor);
 		
@@ -124,7 +142,7 @@ public class Ventana extends JFrame implements ActionListener{
 		title_login.setText("ACCEDER");
 		title_login.setSize(300, 60);
 		title_login.setOpaque(true);
-		title_login.setLocation(95, 10);
+		title_login.setLocation(60, 10);
 		title_login.setBackground(Color.red);
 		title_login.setForeground(Color.WHITE);
 		title_login.setFont(new Font("Arial",Font.BOLD,22));
@@ -181,6 +199,16 @@ public class Ventana extends JFrame implements ActionListener{
 				
 				
 			}
+		});
+		
+		JButton registro = new JButton("¿Aun no tienes cuenta?");
+		registro.setLocation(100, 430);
+		registro.setSize(200, 50);
+		registro.setFont(new Font("Arial",Font.BOLD,22));
+		contenedor.add(registro);
+		
+		registro.addActionListener(e -> {
+			this.router("registro");
 		});
 		
 		JLabel usuario = new JLabel();
@@ -361,6 +389,16 @@ public class Ventana extends JFrame implements ActionListener{
 				
 			}
 			
+		});
+		
+		JButton login = new JButton("cancelar");
+		login.setLocation(190, 570);
+		login.setSize(130, 40);
+		login.setFont(new Font("Arial",Font.BOLD,22));
+		register_container.add(login);
+		
+		login.addActionListener(e -> {
+			this.router("login");
 		});
 		
 		register_container.repaint();
@@ -814,7 +852,6 @@ public class Ventana extends JFrame implements ActionListener{
        pane.setLocation(0,0);
        this.add(pane);
 	}
-
 	
 	public void casa() {
 		JPanel pane = new JPanel() {
@@ -976,6 +1013,21 @@ public class Ventana extends JFrame implements ActionListener{
 	    pane.setLocation(0,0);
 	    pane.setBackground(Color.decode("#5CA3FF"));
 	    this.add(pane);
+	}
+	
+	public void router (String target) {
+		
+		this.getContentPane().removeAll();
+		
+		if (target .equals("login")) 
+			this.login();
+		
+		if (target .equals("registro")) 
+			this.registro();
+		
+		this.setVisible(true);
+		this.repaint();
+		this.revalidate();
 	}
 }
 
