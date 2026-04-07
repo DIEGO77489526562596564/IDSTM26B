@@ -55,50 +55,6 @@ public class Ventana extends JFrame implements ActionListener{
 		//this.setLocation(500, 200);
 		this.setLayout(null);
 		
-		
-		JMenuBar barra = new JMenuBar();
-		JMenu archivo = new JMenu("Archivo");
-		JMenu cuenta = new JMenu("Cuenta");
-		
-		JMenuItem open = new JMenuItem("Abrir");
-		JMenuItem close = new JMenuItem("Cerrar");
-		JMenuItem save = new JMenuItem("Guardar");
-		JMenuItem newFile = new JMenuItem("Nuevo");
-		archivo.add(open);
-		archivo.add(close);
-		archivo.add(save);
-		archivo.add(newFile);
-		
-		JMenuItem acceder = new JMenuItem("Acceder");
-		JMenuItem registrarse = new JMenuItem("Registrarse");
-		cuenta.add(acceder);
-		cuenta.add(registrarse);
-		
-		acceder.addActionListener(e -> {
-			this.router("login");
-		});
-		
-		registrarse.addActionListener(e -> {
-			this.router("registro");
-		});
-		
-		
-		barra.add(archivo);
-		barra.add(cuenta);
-		
-		
-		JMenu submenu = new JMenu("Otros");
-		archivo.addSeparator();
-		
-		JMenuItem menuItem = new JMenuItem("An otem in the submenu");
-		submenu.add(menuItem);
-		menuItem = new JMenuItem("Another item");
-		submenu.add(menuItem);
-		
-		archivo.add(submenu);
-		
-		this.setJMenuBar(barra);
-		
 		/*ImageIcon logo_ventana = new ImageIcon("logoventana.jpg");
 		setIconImage(logo_ventana.getImage());
 		
@@ -116,13 +72,14 @@ public class Ventana extends JFrame implements ActionListener{
 		
 		//this.users();
 		//this.newlogin();
-		//this.login();	
+		this.login();	
 		//this.registro();
 		//this.calculadora();
 		//this.CalculadoraIntereses();;
 		//pintar();
 		//casa();
-		pintarMarioBros();
+		//pintarMarioBros();
+		menu();
 		
 		
 		this.repaint();
@@ -401,6 +358,154 @@ public class Ventana extends JFrame implements ActionListener{
 		login.addActionListener(e -> {
 			this.router("login");
 		});
+		
+		register_container.repaint();
+	}
+	
+	public void recovery_password() {
+		JPanel register_container = new JPanel();
+		register_container.setSize(800, 700);
+		register_container.setLocation(200, 0);
+		register_container.setOpaque(true);
+		register_container.setBackground(Color.decode("#63FFC7"));
+		register_container.setLayout(null);
+		this.add(register_container);
+		
+		JLabel registro = new JLabel("RECUPERANDO CONTRASEÑA...");
+		registro.setBounds(200, 270, 400, 40);
+		registro.setBackground(Color.white);
+		registro.setBackground(Color.decode("#63FFC7"));
+		registro.setHorizontalAlignment(JLabel.CENTER);
+		registro.setOpaque(true);
+		registro.setFont(new Font("Arial",Font.BOLD,22));
+		register_container.add(registro);
+		
+		
+		register_container.repaint();
+	}
+	
+	public void alta() {
+		JPanel register_container = new JPanel();
+		register_container.setSize(800, 700);
+		register_container.setLocation(200, 0);
+		register_container.setOpaque(true);
+		register_container.setBackground(Color.decode("#63FFC7"));
+		register_container.setLayout(null);
+		this.add(register_container);
+		
+		JLabel registro = new JLabel("DANDO DE ALTA EL USUARIO...");
+		registro.setBounds(170, 270, 500, 40);
+		registro.setBackground(Color.white);
+		registro.setBackground(Color.decode("#63FFC7"));
+		registro.setHorizontalAlignment(JLabel.CENTER);
+		registro.setOpaque(true);
+		registro.setFont(new Font("Arial",Font.BOLD,22));
+		register_container.add(registro);
+		
+		register_container.repaint();
+	}
+	
+	public void baja() {
+		JPanel register_container = new JPanel();
+		register_container.setSize(800, 700);
+		register_container.setLocation(200, 0);
+		register_container.setOpaque(true);
+		register_container.setBackground(Color.decode("#63FFC7"));
+		register_container.setLayout(null);
+		this.add(register_container);
+		
+		JLabel registro = new JLabel("DANDO DE BAJA EL USUARIO...");
+		registro.setBounds(150, 270, 500, 40);
+		registro.setBackground(Color.white);
+		registro.setBackground(Color.decode("#63FFC7"));
+		registro.setHorizontalAlignment(JLabel.CENTER);
+		registro.setOpaque(true);
+		registro.setFont(new Font("Arial",Font.BOLD,22));
+		register_container.add(registro);
+		
+		register_container.repaint();
+	}
+	
+	public void consultar() {
+		JPanel register_container = new JPanel();
+		register_container.setSize(800, 700);
+		register_container.setLocation(200, 0);
+		register_container.setOpaque(true);
+		register_container.setBackground(Color.decode("#63FFC7"));
+		register_container.setLayout(null);
+		this.add(register_container);
+		
+		JLabel registro = new JLabel("CONSULTANDO EL USUARIO...");
+		registro.setBounds(170, 270, 500, 40);
+		registro.setBackground(Color.white);
+		registro.setBackground(Color.decode("#63FFC7"));
+		registro.setHorizontalAlignment(JLabel.CENTER);
+		registro.setOpaque(true);
+		registro.setFont(new Font("Arial",Font.BOLD,22));
+		register_container.add(registro);
+		
+		register_container.repaint();
+	}
+	
+	public void p1_usuario() {
+		JPanel register_container = new JPanel();
+		register_container.setSize(800, 700);
+		register_container.setLocation(200, 0);
+		register_container.setOpaque(true);
+		register_container.setBackground(Color.decode("#63FFC7"));
+		register_container.setLayout(null);
+		this.add(register_container);
+		
+		JLabel registro = new JLabel("¿Cómo crear un usuario?");
+		registro.setBounds(150, 270, 500, 40);
+		registro.setBackground(Color.white);
+		registro.setBackground(Color.decode("#63FFC7"));
+		registro.setHorizontalAlignment(JLabel.CENTER);
+		registro.setOpaque(true);
+		registro.setFont(new Font("Arial",Font.BOLD,22));
+		register_container.add(registro);
+		
+		register_container.repaint();
+	}
+	
+	public void p2_sistema() {
+		JPanel register_container = new JPanel();
+		register_container.setSize(800, 700);
+		register_container.setLocation(200, 0);
+		register_container.setOpaque(true);
+		register_container.setBackground(Color.decode("#63FFC7"));
+		register_container.setLayout(null);
+		this.add(register_container);
+		
+		JLabel registro = new JLabel("¿Cómo acceder al sistema?");
+		registro.setBounds(150, 270, 500, 40);
+		registro.setBackground(Color.white);
+		registro.setBackground(Color.decode("#63FFC7"));
+		registro.setHorizontalAlignment(JLabel.CENTER);
+		registro.setOpaque(true);
+		registro.setFont(new Font("Arial",Font.BOLD,22));
+		register_container.add(registro);
+		
+		register_container.repaint();
+	}
+	
+	public void p3_contra() {
+		JPanel register_container = new JPanel();
+		register_container.setSize(800, 700);
+		register_container.setLocation(200, 0);
+		register_container.setOpaque(true);
+		register_container.setBackground(Color.decode("#63FFC7"));
+		register_container.setLayout(null);
+		this.add(register_container);
+		
+		JLabel registro = new JLabel("¿Qué pasa si olvidé mi contraseña?");
+		registro.setBounds(150, 270, 500, 40);
+		registro.setBackground(Color.white);
+		registro.setBackground(Color.decode("#63FFC7"));
+		registro.setHorizontalAlignment(JLabel.CENTER);
+		registro.setOpaque(true);
+		registro.setFont(new Font("Arial",Font.BOLD,22));
+		register_container.add(registro);
 		
 		register_container.repaint();
 	}
@@ -1020,15 +1125,135 @@ public class Ventana extends JFrame implements ActionListener{
 		
 		this.getContentPane().removeAll();
 		
+		//cuenta
 		if (target .equals("login")) 
 			this.login();
 		
 		if (target .equals("registro")) 
 			this.registro();
 		
+		if(target.equals("recovery"))
+			this.recovery_password();
+		
+		//usuarios
+		if (target .equals("alta")) 
+			this.alta();
+		
+		if (target .equals("baja")) 
+			this.baja();
+		
+		
+		if(target.equals("consultar"))
+			this.consultar();
+		
+		//preguntas
+		if (target .equals("p1_usuario")) 
+			this.p1_usuario();
+		
+		if (target .equals("p2_sistema")) 
+			this.p2_sistema();
+		
+		if(target.equals("p3_contra"))
+			this.p3_contra();
+		
+		
 		this.setVisible(true);
 		this.repaint();
 		this.revalidate();
+	}
+	
+	public void menu() {
+		JMenuBar barra = new JMenuBar();
+		JMenu archivo = new JMenu("Archivo");
+		JMenu cuenta = new JMenu("Cuenta");
+		JMenu usuarios = new JMenu("Usuarios");
+		JMenu ayuda = new JMenu("Ayuda");
+		
+		JMenuItem open = new JMenuItem("Abrir");
+		JMenuItem close = new JMenuItem("Cerrar");
+		JMenuItem save = new JMenuItem("Guardar");
+		JMenuItem newFile = new JMenuItem("Nuevo");
+		archivo.add(open);
+		archivo.add(close);
+		archivo.add(save);
+		archivo.add(newFile);
+		
+		JMenuItem acceder = new JMenuItem("Acceder");
+		JMenuItem registrarse = new JMenuItem("Registrarse");
+		JMenuItem recover_item = new JMenuItem("Recuperacion de cuenta");
+		cuenta.add(acceder);
+		cuenta.add(registrarse);
+		cuenta.add(recover_item);
+		
+		acceder.addActionListener(e -> {
+			this.router("login");
+		});
+		
+		registrarse.addActionListener(e -> {
+			this.router("registro");
+		});
+		
+		recover_item.addActionListener(e ->{
+			this.router("recovery");
+		});
+		
+		barra.add(archivo);
+		barra.add(cuenta);
+		barra.add(usuarios);
+		barra.add(ayuda);
+		
+		JMenuItem alta_item = new JMenuItem("Alta");
+		JMenuItem baja_item = new JMenuItem("Baja");
+		JMenuItem consultar_item = new JMenuItem("Consultar");
+		usuarios.add(alta_item);
+		usuarios.add(baja_item);
+		usuarios.add(consultar_item);
+		
+		alta_item.addActionListener(e -> {
+			this.router("alta");
+		});
+		
+		baja_item.addActionListener(e -> {
+			this.router("baja");
+		});
+		
+		consultar_item.addActionListener(e ->{
+			this.router("consultar");
+		});
+		
+		JMenuItem crear_usuario = new JMenuItem("¿Cómo crear un usuario?");
+		JMenuItem acceder_sistema = new JMenuItem("¿Cómo acceder al sistema?");
+		JMenuItem olvide_contra = new JMenuItem("¿Qué pasa si olvidé mi contraseña?");
+		ayuda.add(crear_usuario);
+		ayuda.add(acceder_sistema);
+		ayuda.add(olvide_contra);
+		
+		crear_usuario.addActionListener(e -> {
+			this.router("p1_usuario");
+		});
+		
+		acceder_sistema.addActionListener(e -> {
+			this.router("p2_sistema");
+		});
+		
+		olvide_contra.addActionListener(e ->{
+			this.router("p3_contra");
+		});
+		
+		
+		JMenu submenu = new JMenu("Otros");
+		archivo.addSeparator();
+		
+		JMenuItem menuItem = new JMenuItem("An item in the submenu");
+		submenu.add(menuItem);
+		menuItem = new JMenuItem("Another item");
+		submenu.add(menuItem);
+		
+		archivo.add(submenu);
+		
+		
+		this.setJMenuBar(barra);
+		
 	}
 	
 	public void pintarMarioBros() {
