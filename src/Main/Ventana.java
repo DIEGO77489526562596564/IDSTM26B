@@ -38,11 +38,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 
-
 public class Ventana extends JFrame implements ActionListener{
-	
 	public Ventana() {
-				
+			
 		this.setVisible(true);
 		this.setSize(1200,700);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,6 +72,13 @@ public class Ventana extends JFrame implements ActionListener{
 		//this.newlogin();
 		this.login();	
 		//this.registro();
+		//this.alta();
+		//this.p1_usuario();
+		//this.p3_contra();
+		//this.p2_sistema();
+		//this.recovery_password();
+		//this.baja();
+		//consultar();
 		//this.calculadora();
 		//this.CalculadoraIntereses();;
 		//pintar();
@@ -127,7 +132,7 @@ public class Ventana extends JFrame implements ActionListener{
 		contenedor.add(contra);
 		
 		acceder.addActionListener(new ActionListener() {
-
+	
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String username_val = username.getText();
@@ -327,7 +332,7 @@ public class Ventana extends JFrame implements ActionListener{
 		register_container.add(crear_cuenta);
 		
 		crear_cuenta.addActionListener(new ActionListener() {
-
+	
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String username_val = user_nombre.getText();
@@ -371,15 +376,80 @@ public class Ventana extends JFrame implements ActionListener{
 		register_container.setLayout(null);
 		this.add(register_container);
 		
-		JLabel registro = new JLabel("RECUPERANDO CONTRASEÑA...");
-		registro.setBounds(200, 270, 400, 40);
-		registro.setBackground(Color.white);
-		registro.setBackground(Color.decode("#63FFC7"));
-		registro.setHorizontalAlignment(JLabel.CENTER);
-		registro.setOpaque(true);
-		registro.setFont(new Font("Arial",Font.BOLD,22));
-		register_container.add(registro);
+		JLabel title_login = new JLabel();
+		title_login.setText("RECUPERAR CUENTA");
+		title_login.setSize(300, 60);
+		title_login.setOpaque(true);
+		title_login.setLocation(250, 10);
+		title_login.setBackground(Color.red);
+		title_login.setForeground(Color.WHITE);
+		title_login.setFont(new Font("Arial",Font.BOLD,22));
+		title_login.setHorizontalAlignment(JLabel.CENTER);
+		register_container.add(title_login);
 		
+		JLabel correo = new JLabel();
+		correo.setText("CORREO ELECTRÓNICO:");
+		correo.setSize(250, 30);
+		correo.setOpaque(true);
+		correo.setLocation(20, 90);
+		correo.setBackground(Color.decode("#63FFC7"));
+		correo.setForeground(Color.BLACK);
+		correo.setFont(new Font("Arial",Font.BOLD,18));
+		correo.setHorizontalAlignment(JLabel.CENTER);
+		register_container.add(correo);
+		
+		JTextField correo1 = new JTextField();
+		correo1.setSize(350, 30);
+		correo1.setLocation(30, 130);
+		correo1.setFont(new Font("Arial",Font.BOLD,18));
+		register_container.add(correo1);
+		
+		JLabel usuario = new JLabel();
+		usuario.setText("CONTRASEÑA:");
+		usuario.setSize(250, 30);
+		usuario.setOpaque(true);
+		usuario.setLocation(-20, 180);
+		usuario.setBackground(Color.decode("#63FFC7"));
+		usuario.setForeground(Color.BLACK);
+		usuario.setFont(new Font("Arial",Font.BOLD,18));
+		usuario.setHorizontalAlignment(JLabel.CENTER);
+		register_container.add(usuario);
+		
+		JPasswordField user = new JPasswordField();
+		user.setSize(350, 30);
+		user.setLocation(30, 220);
+		user.setFont(new Font("Arial", Font.BOLD, 18));
+		register_container.add(user);
+		
+		JButton cancelar = new JButton();
+		cancelar.setText("Recuperar");
+		cancelar.setLocation(30, 270);
+		cancelar.setSize(130, 50);
+		cancelar.setFont(new Font("Arial",Font.BOLD,18));
+		register_container.add(cancelar);
+		
+		cancelar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "Se te envío un link a tu correo.");
+            }
+        });
+		
+		if(cancelar != null) {
+			cancelar.addActionListener(e -> {
+				this.router("login");
+			});
+		}
+		
+		JButton volver = new JButton();
+		volver.setText("Volver");
+		volver.setLocation(250, 270);
+		volver.setSize(130, 50);
+		volver.setFont(new Font("Arial",Font.BOLD,18));
+		register_container.add(volver);
+		
+		volver.addActionListener(e -> {
+			this.router("login");
+		});
 		
 		register_container.repaint();
 	}
@@ -393,17 +463,88 @@ public class Ventana extends JFrame implements ActionListener{
 		register_container.setLayout(null);
 		this.add(register_container);
 		
-		JLabel registro = new JLabel("DANDO DE ALTA EL USUARIO...");
-		registro.setBounds(170, 270, 500, 40);
-		registro.setBackground(Color.white);
-		registro.setBackground(Color.decode("#63FFC7"));
-		registro.setHorizontalAlignment(JLabel.CENTER);
-		registro.setOpaque(true);
-		registro.setFont(new Font("Arial",Font.BOLD,22));
-		register_container.add(registro);
+		JLabel title_login = new JLabel();
+		title_login.setText("DAR DE ALTA");
+		title_login.setSize(300, 60);
+		title_login.setOpaque(true);
+		title_login.setLocation(250, 10);
+		title_login.setBackground(Color.red);
+		title_login.setForeground(Color.WHITE);
+		title_login.setFont(new Font("Arial",Font.BOLD,22));
+		title_login.setHorizontalAlignment(JLabel.CENTER);
+		register_container.add(title_login);
 		
+		JTextField correo1 = new JTextField();
+		correo1.setSize(350, 30);
+		correo1.setLocation(30, 130);
+		correo1.setFont(new Font("Arial",Font.BOLD,18));
+		register_container.add(correo1);
+		
+		JButton acceder = new JButton();
+		acceder.setText("Guardar");
+		acceder.setLocation(30, 350);
+		acceder.setSize(150, 50);
+		acceder.setFont(new Font("Arial",Font.BOLD,22));
+		register_container.add(acceder);
+		
+		JTextField user = new JTextField();
+		user.setSize(350, 30);
+		user.setLocation(30, 220);
+		user.setFont(new Font("Arial", Font.BOLD, 18));
+		register_container.add(user);
+		
+		JPasswordField contra = new JPasswordField();
+		contra.setSize(350, 30);
+		contra.setLocation(30, 300);
+		contra.setFont(new Font("Arial", Font.BOLD, 18));
+		register_container.add(contra);
+		
+		JLabel correo = new JLabel();
+		correo.setText("CORREO ELECTRÓNICO:");
+		correo.setSize(250, 30);
+		correo.setOpaque(true);
+		correo.setLocation(20, 90);
+		correo.setBackground(Color.decode("#63FFC7"));
+		correo.setForeground(Color.BLACK);
+		correo.setFont(new Font("Arial",Font.BOLD,18));
+		correo.setHorizontalAlignment(JLabel.CENTER);
+		register_container.add(correo);
+		
+		JLabel usuario = new JLabel();
+		usuario.setText("NOMBRE DE USUARIO:");
+		usuario.setSize(250, 30);
+		usuario.setOpaque(true);
+		usuario.setLocation(15, 180);
+		usuario.setBackground(Color.decode("#63FFC7"));
+		usuario.setForeground(Color.BLACK);
+		usuario.setFont(new Font("Arial",Font.BOLD,18));
+		usuario.setHorizontalAlignment(JLabel.CENTER);
+		register_container.add(usuario);
+		
+		JLabel contraseña = new JLabel();
+		contraseña.setText("CONTRASEÑA:");
+		contraseña.setSize(250, 30);
+		contraseña.setOpaque(true);
+		contraseña.setLocation(-20, 260);
+		contraseña.setBackground(Color.decode("#63FFC7"));
+		contraseña.setForeground(Color.BLACK);
+		contraseña.setFont(new Font("Arial",Font.BOLD,18));
+		contraseña.setHorizontalAlignment(JLabel.CENTER);
+		register_container.add(contraseña);
+		
+		JButton cancelar = new JButton();
+		cancelar.setText("Cancelar");
+		cancelar.setLocation(230, 350);
+		cancelar.setSize(150, 50);
+		cancelar.setFont(new Font("Arial",Font.BOLD,22));
+		register_container.add(cancelar);
+		
+		cancelar.addActionListener(e -> {
+			this.router("login");
+		});
 		register_container.repaint();
 	}
+	
 	
 	public void baja() {
 		JPanel register_container = new JPanel();
@@ -414,14 +555,82 @@ public class Ventana extends JFrame implements ActionListener{
 		register_container.setLayout(null);
 		this.add(register_container);
 		
-		JLabel registro = new JLabel("DANDO DE BAJA EL USUARIO...");
-		registro.setBounds(150, 270, 500, 40);
-		registro.setBackground(Color.white);
-		registro.setBackground(Color.decode("#63FFC7"));
-		registro.setHorizontalAlignment(JLabel.CENTER);
-		registro.setOpaque(true);
-		registro.setFont(new Font("Arial",Font.BOLD,22));
-		register_container.add(registro);
+		JLabel title_login = new JLabel();
+		title_login.setText("DAR DE BAJA");
+		title_login.setSize(300, 60);
+		title_login.setOpaque(true);
+		title_login.setLocation(250, 10);
+		title_login.setBackground(Color.red);
+		title_login.setForeground(Color.WHITE);
+		title_login.setFont(new Font("Arial",Font.BOLD,22));
+		title_login.setHorizontalAlignment(JLabel.CENTER);
+		register_container.add(title_login);
+		
+		JLabel correo = new JLabel();
+		correo.setText("SELECCIONE UN USUARIO:");
+		correo.setSize(250, 30);
+		correo.setOpaque(true);
+		correo.setLocation(80, 110);
+		correo.setBackground(Color.decode("#63FFC7"));
+		correo.setForeground(Color.BLACK);
+		correo.setFont(new Font("Arial",Font.BOLD,16));
+		correo.setHorizontalAlignment(JLabel.CENTER);
+		register_container.add(correo);
+		
+		JButton eliminar = new JButton();
+		eliminar.setText("Eliminar");
+		eliminar.setLocation(570, 400);
+		eliminar.setSize(130, 50);
+		eliminar.setFont(new Font("Arial",Font.BOLD,22));
+		register_container.add(eliminar);
+		
+		Object [] table_head = {"No. control", "Nombre", "Apellido", "Acciones"};
+		
+		Object [][] table_content = {
+				{"22150001", "Carlos", "Ramírez", "Editar"},
+				{"22150002", "María", "López", "Editar"},
+				{"22150003", "José", "Hernández", "Editar"},
+				{"22150004", "Ana", "García", "Editar"},
+				{"22150005", "Luis", "Martínez", "Editar"},
+				{"22150006", "Fernanda", "Sánchez", "Editar"},
+				{"22150007", "Miguel", "Torres", "Editar"},
+				{"22150008", "Daniela", "Flores", "Editar"},
+				{"22150009", "Jorge", "Castillo", "Editar"},
+				{"22150010", "Valeria", "Morales", "Editar"},
+				{"22150011", "Ricardo", "Ortiz", "Editar"},
+				{"22150012", "Paola", "Reyes", "Editar"},
+				{"22150013", "Alejandro", "Cruz", "Editar"},
+				{"22150014", "Sofía", "Vargas", "Editar"},
+				{"22150015", "David", "Mendoza", "Editar"},
+				{"22150016", "Camila", "Rojas", "Editar"},
+				{"22150017", "Emmanuel", "Navarro", "Editar"},
+				{"22150018", "Andrea", "Delgado", "Editar"},
+				{"22150019", "Hugo", "Paredes", "Editar"},
+				{"22150020", "Lucía", "Silva", "Editar"},
+				{"22150021", "Brandon", "Campos", "Editar"},
+				{"22150022", "Natalia", "Peña", "Editar"},
+				{"22150023", "Kevin", "Aguilar", "Editar"},
+				{"22150024", "Renata", "Fuentes", "Editar"},
+				{"22150025", "Iván", "Salazar", "Editar"}
+			};
+		
+		JTable users_table = new JTable(table_content, table_head);
+		JScrollPane scrollPane = new JScrollPane(users_table);
+		
+		scrollPane.setLocation(100, 150);
+		scrollPane.setSize(600, 240);
+		register_container.add(scrollPane);
+		
+		JButton cancelar = new JButton();
+		cancelar.setText("Cancelar");
+		cancelar.setLocation(430, 400);
+		cancelar.setSize(130, 50);
+		cancelar.setFont(new Font("Arial",Font.BOLD,22));
+		register_container.add(cancelar);
+		
+		cancelar.addActionListener(e -> {
+			this.router("consultar");
+		});
 		
 		register_container.repaint();
 	}
@@ -435,14 +644,75 @@ public class Ventana extends JFrame implements ActionListener{
 		register_container.setLayout(null);
 		this.add(register_container);
 		
-		JLabel registro = new JLabel("CONSULTANDO EL USUARIO...");
-		registro.setBounds(170, 270, 500, 40);
-		registro.setBackground(Color.white);
-		registro.setBackground(Color.decode("#63FFC7"));
-		registro.setHorizontalAlignment(JLabel.CENTER);
-		registro.setOpaque(true);
-		registro.setFont(new Font("Arial",Font.BOLD,22));
-		register_container.add(registro);
+		JLabel title_login = new JLabel();
+		title_login.setText("CONSULTAR USUARIOS");
+		title_login.setSize(300, 60);
+		title_login.setOpaque(true);
+		title_login.setLocation(250, 10);
+		title_login.setBackground(Color.red);
+		title_login.setForeground(Color.WHITE);
+		title_login.setFont(new Font("Arial",Font.BOLD,22));
+		title_login.setHorizontalAlignment(JLabel.CENTER);
+		register_container.add(title_login);
+		
+		JLabel correo = new JLabel();
+		correo.setText("LISTA DE LOS USUARIOS:");
+		correo.setSize(250, 30);
+		correo.setOpaque(true);
+		correo.setLocation(90, 110);
+		correo.setBackground(Color.decode("#63FFC7"));
+		correo.setForeground(Color.BLACK);
+		correo.setFont(new Font("Arial",Font.BOLD,18));
+		correo.setHorizontalAlignment(JLabel.CENTER);
+		register_container.add(correo);
+		
+		Object [] table_head = {"No. control", "Nombre", "Apellido", "Acciones"};
+		
+		Object [][] table_content = {
+				{"22150001", "Carlos", "Ramírez", "Editar"},
+				{"22150002", "María", "López", "Editar"},
+				{"22150003", "José", "Hernández", "Editar"},
+				{"22150004", "Ana", "García", "Editar"},
+				{"22150005", "Luis", "Martínez", "Editar"},
+				{"22150006", "Fernanda", "Sánchez", "Editar"},
+				{"22150007", "Miguel", "Torres", "Editar"},
+				{"22150008", "Daniela", "Flores", "Editar"},
+				{"22150009", "Jorge", "Castillo", "Editar"},
+				{"22150010", "Valeria", "Morales", "Editar"},
+				{"22150011", "Ricardo", "Ortiz", "Editar"},
+				{"22150012", "Paola", "Reyes", "Editar"},
+				{"22150013", "Alejandro", "Cruz", "Editar"},
+				{"22150014", "Sofía", "Vargas", "Editar"},
+				{"22150015", "David", "Mendoza", "Editar"},
+				{"22150016", "Camila", "Rojas", "Editar"},
+				{"22150017", "Emmanuel", "Navarro", "Editar"},
+				{"22150018", "Andrea", "Delgado", "Editar"},
+				{"22150019", "Hugo", "Paredes", "Editar"},
+				{"22150020", "Lucía", "Silva", "Editar"},
+				{"22150021", "Brandon", "Campos", "Editar"},
+				{"22150022", "Natalia", "Peña", "Editar"},
+				{"22150023", "Kevin", "Aguilar", "Editar"},
+				{"22150024", "Renata", "Fuentes", "Editar"},
+				{"22150025", "Iván", "Salazar", "Editar"}
+			};
+		
+		JTable users_table = new JTable(table_content, table_head);
+		JScrollPane scrollPane = new JScrollPane(users_table);
+		
+		scrollPane.setLocation(100, 150);
+		scrollPane.setSize(600, 240);
+		register_container.add(scrollPane);
+		
+		JButton cancelar = new JButton();
+		cancelar.setText("Volver");
+		cancelar.setLocation(570, 400);
+		cancelar.setSize(130, 50);
+		cancelar.setFont(new Font("Arial",Font.BOLD,22));
+		register_container.add(cancelar);
+		
+		cancelar.addActionListener(e -> {
+			this.router("login");
+		});
 		
 		register_container.repaint();
 	}
@@ -456,14 +726,52 @@ public class Ventana extends JFrame implements ActionListener{
 		register_container.setLayout(null);
 		this.add(register_container);
 		
-		JLabel registro = new JLabel("¿Cómo crear un usuario?");
-		registro.setBounds(150, 270, 500, 40);
-		registro.setBackground(Color.white);
-		registro.setBackground(Color.decode("#63FFC7"));
-		registro.setHorizontalAlignment(JLabel.CENTER);
-		registro.setOpaque(true);
-		registro.setFont(new Font("Arial",Font.BOLD,22));
-		register_container.add(registro);
+		JLabel title_login = new JLabel();
+		title_login.setText("¿Cómo crear un usuario?");
+		title_login.setSize(300, 60);
+		title_login.setOpaque(true);
+		title_login.setLocation(250, 10);
+		title_login.setBackground(Color.red);
+		title_login.setForeground(Color.WHITE);
+		title_login.setFont(new Font("Arial",Font.BOLD,22));
+		title_login.setHorizontalAlignment(JLabel.CENTER);
+		register_container.add(title_login);
+		
+		JTextArea user_nombre = new JTextArea("Para crear un nuevo usuario da clic en el siguiente boton.");
+		user_nombre.setSize(550, 30);
+		user_nombre.setLocation(80, 110);
+		user_nombre.setBackground(Color.decode("#63FFC7"));
+		user_nombre.setFont(new Font("Arial",Font.BOLD,18));
+		register_container.add(user_nombre);
+		
+		JButton ir_registro = new JButton();
+		ir_registro.setText("Registro");
+		ir_registro.setLocation(80, 150);
+		ir_registro.setSize(140, 50);
+		ir_registro.setFont(new Font("Arial",Font.BOLD,18));
+		register_container.add(ir_registro);
+		
+		ir_registro.addActionListener(e -> {
+			this.router("registro");
+		});
+		
+		JTextArea siguiente_paso = new JTextArea("Despues ingresa tus datos personales y dale al boton de crear cuenta. Y listo.");
+		siguiente_paso.setSize(700, 30);
+		siguiente_paso.setLocation(80, 230);
+		siguiente_paso.setBackground(Color.decode("#63FFC7"));
+		siguiente_paso.setFont(new Font("Arial",Font.BOLD,18));
+		register_container.add(siguiente_paso);
+		
+		JButton volver = new JButton();
+		volver.setText("Volver");
+		volver.setLocation(80, 270);
+		volver.setSize(140, 50);
+		volver.setFont(new Font("Arial",Font.BOLD,18));
+		register_container.add(volver);
+		
+		ir_registro.addActionListener(e -> {
+			this.router("login");
+		});
 		
 		register_container.repaint();
 	}
@@ -477,14 +785,41 @@ public class Ventana extends JFrame implements ActionListener{
 		register_container.setLayout(null);
 		this.add(register_container);
 		
-		JLabel registro = new JLabel("¿Cómo acceder al sistema?");
-		registro.setBounds(150, 270, 500, 40);
-		registro.setBackground(Color.white);
-		registro.setBackground(Color.decode("#63FFC7"));
-		registro.setHorizontalAlignment(JLabel.CENTER);
-		registro.setOpaque(true);
-		registro.setFont(new Font("Arial",Font.BOLD,22));
-		register_container.add(registro);
+		JLabel title_login = new JLabel();
+		title_login.setText("¿Cómo acceder al sistema?");
+		title_login.setSize(300, 60);
+		title_login.setOpaque(true);
+		title_login.setLocation(250, 10);
+		title_login.setBackground(Color.red);
+		title_login.setForeground(Color.WHITE);
+		title_login.setFont(new Font("Arial",Font.BOLD,22));
+		title_login.setHorizontalAlignment(JLabel.CENTER);
+		register_container.add(title_login);
+		
+		JTextArea user_nombre = new JTextArea("Para ingresar al sistema da clic en el siguiente boton.");
+		user_nombre.setSize(550, 30);
+		user_nombre.setLocation(80, 110);
+		user_nombre.setBackground(Color.decode("#63FFC7"));
+		user_nombre.setFont(new Font("Arial",Font.BOLD,18));
+		register_container.add(user_nombre);
+		
+		JButton ir_registro = new JButton();
+		ir_registro.setText("Login");
+		ir_registro.setLocation(80, 150);
+		ir_registro.setSize(140, 50);
+		ir_registro.setFont(new Font("Arial",Font.BOLD,18));
+		register_container.add(ir_registro);
+		
+		ir_registro.addActionListener(e -> {
+			this.router("login");
+		});
+		
+		JTextArea siguiente_paso = new JTextArea("Despues ingresa tus correo y contraseña y dale al boton de login. Y listo.");
+		siguiente_paso.setSize(700, 30);
+		siguiente_paso.setLocation(80, 230);
+		siguiente_paso.setBackground(Color.decode("#63FFC7"));
+		siguiente_paso.setFont(new Font("Arial",Font.BOLD,18));
+		register_container.add(siguiente_paso);
 		
 		register_container.repaint();
 	}
@@ -498,14 +833,52 @@ public class Ventana extends JFrame implements ActionListener{
 		register_container.setLayout(null);
 		this.add(register_container);
 		
-		JLabel registro = new JLabel("¿Qué pasa si olvidé mi contraseña?");
-		registro.setBounds(150, 270, 500, 40);
-		registro.setBackground(Color.white);
-		registro.setBackground(Color.decode("#63FFC7"));
-		registro.setHorizontalAlignment(JLabel.CENTER);
-		registro.setOpaque(true);
-		registro.setFont(new Font("Arial",Font.BOLD,22));
-		register_container.add(registro);
+		JLabel title_login = new JLabel();
+		title_login.setText("¿Cómo acceder al sistema?");
+		title_login.setSize(300, 60);
+		title_login.setOpaque(true);
+		title_login.setLocation(250, 10);
+		title_login.setBackground(Color.red);
+		title_login.setForeground(Color.WHITE);
+		title_login.setFont(new Font("Arial",Font.BOLD,22));
+		title_login.setHorizontalAlignment(JLabel.CENTER);
+		register_container.add(title_login);
+		
+		JTextArea user_nombre = new JTextArea("Para recuperar tu contraseña da clic en el siguiente boton.");
+		user_nombre.setSize(550, 30);
+		user_nombre.setLocation(80, 110);
+		user_nombre.setBackground(Color.decode("#63FFC7"));
+		user_nombre.setFont(new Font("Arial",Font.BOLD,18));
+		register_container.add(user_nombre);
+		
+		JButton ir_registro = new JButton();
+		ir_registro.setText("Recuperar");
+		ir_registro.setLocation(80, 150);
+		ir_registro.setSize(140, 50);
+		ir_registro.setFont(new Font("Arial",Font.BOLD,18));
+		register_container.add(ir_registro);
+		
+		ir_registro.addActionListener(e -> {
+			this.router("recovery");
+		});
+		
+		JTextArea siguiente_paso = new JTextArea("Despues ingresa tus correo y contraseña y dale al boton de recuperar. Y listo.");
+		siguiente_paso.setSize(700, 30);
+		siguiente_paso.setLocation(80, 230);
+		siguiente_paso.setBackground(Color.decode("#63FFC7"));
+		siguiente_paso.setFont(new Font("Arial",Font.BOLD,18));
+		register_container.add(siguiente_paso);
+		
+		JButton volver = new JButton();
+		volver.setText("Volver");
+		volver.setLocation(80, 270);
+		volver.setSize(140, 50);
+		volver.setFont(new Font("Arial",Font.BOLD,18));
+		register_container.add(volver);
+		
+		volver.addActionListener(e -> {
+			this.router("login");
+		});
 		
 		register_container.repaint();
 	}
@@ -594,7 +967,7 @@ public class Ventana extends JFrame implements ActionListener{
 		    crear_cuenta.setHorizontalAlignment(JLabel.CENTER);
 		    crear_cuenta.addActionListener(this);
 		    crear_cuenta.addMouseListener (new java.awt.event.MouseAdapter() {
-
+	
 				@Override
 				public void mouseEntered(MouseEvent e) {
 					// TODO Auto-generated method stub
@@ -602,7 +975,7 @@ public class Ventana extends JFrame implements ActionListener{
 					crear_cuenta.setForeground(Color.white);
 					super.mouseEntered(e);
 				}
-
+	
 				@Override
 				public void mouseExited(MouseEvent e) {
 					// TODO Auto-generated method stub
@@ -613,22 +986,22 @@ public class Ventana extends JFrame implements ActionListener{
 		    	
 		    });
 		    login2.add(crear_cuenta);
-
+	
 		    ImageIcon fondo = new ImageIcon("fondo5.jpg");
 		    JLabel fondoazul = new JLabel();
 		    fondoazul.setBounds(0, 0, 1150, 600);
 		    fondoazul.setIcon(new ImageIcon(fondo.getImage().getScaledInstance(1150, 600, Image.SCALE_SMOOTH)));
 		    login2.add(fondoazul);
-
+	
 		    login2.setComponentZOrder(fondoazul, login2.getComponentCount()-1);
-
+	
 		    JPanel cuadroLogin = new JPanel();
 		    cuadroLogin.setBounds(280, 80, 600, 350);
 		    cuadroLogin.setBackground(Color.decode("#0B1F47"));
 		    cuadroLogin.setBorder(BorderFactory.createLineBorder(Color.white));
 		    cuadroLogin.setLayout(null);
 		    fondoazul.add(cuadroLogin);
-
+	
 		    JLabel user_login = new JLabel("USER LOGIN");
 		    user_login.setBounds(480, 20, 250, 40);
 		    user_login.setForeground(Color.white);
@@ -678,7 +1051,7 @@ public class Ventana extends JFrame implements ActionListener{
 		    login.setHorizontalAlignment(JLabel.CENTER);
 		    login.addActionListener(this);
 		    login.addMouseListener (new java.awt.event.MouseAdapter() {
-
+	
 				@Override
 				public void mouseEntered(MouseEvent e) {
 					// TODO Auto-generated method stub
@@ -686,7 +1059,7 @@ public class Ventana extends JFrame implements ActionListener{
 					login.setForeground(Color.white);
 					super.mouseEntered(e);
 				}
-
+	
 				@Override
 				public void mouseExited(MouseEvent e) {
 					// TODO Auto-generated method stub
@@ -717,11 +1090,11 @@ public class Ventana extends JFrame implements ActionListener{
 		    fondoazul.add(noaccount);
 		    
 		    
-
+	
 			this.repaint();
 			this.revalidate();
 	}
-
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -729,7 +1102,7 @@ public class Ventana extends JFrame implements ActionListener{
 	}
 	
 	public void calculadora() {
-
+	
 	    JPanel calculadora = new JPanel();
 	    calculadora.setSize(600, 450);
 	    calculadora.setLocation(270, 60);
@@ -739,43 +1112,43 @@ public class Ventana extends JFrame implements ActionListener{
 	    
 	    JPanel panelSuperior = new JPanel();
 	    panelSuperior.setLayout(new GridLayout(2,1));
-
+	
 	    JTextField barranum = new JTextField("100");
 	    barranum.setFont(new Font("Arial", Font.BOLD, 40));
 	    barranum.setBorder(BorderFactory.createLineBorder(Color.black));
 	    barranum.setHorizontalAlignment(JTextField.RIGHT);
-
+	
 	    panelSuperior.add(barranum);
-
+	
 	    JPanel memoria = new JPanel();
 	    memoria.setLayout(new FlowLayout(0, 50, 10));
 	    memoria.setBackground(Color.red);
-
+	
 	    JButton mc = new JButton("    MC    ");
 	    mc.setFont(new Font("Arial", Font.BOLD, 20));
-
+	
 	    JButton mp = new JButton("    M+    ");
 	    mp.setFont(new Font("Arial", Font.BOLD, 20));
-
+	
 	    JButton div = new JButton("    /    ");
 	    div.setFont(new Font("Arial", Font.BOLD, 20));
-
+	
 	    JButton mult = new JButton("    *    ");
 	    mult.setFont(new Font("Arial", Font.BOLD, 20));
-
+	
 	    memoria.add(mc);
 	    memoria.add(mp);
 	    memoria.add(div);
 	    memoria.add(mult);
-
+	
 	    panelSuperior.add(memoria);
-
+	
 	    calculadora.add(panelSuperior, BorderLayout.NORTH);
 	    
 	    JPanel center_cal = new JPanel();
 	    center_cal.setBackground(Color.yellow);
 	    center_cal.setLayout(new GridLayout(4, 3, 5, 5));
-
+	
 	    center_cal.add(new JButton("7"));
 	    center_cal.add(new JButton("8"));
 	    center_cal.add(new JButton("9"));
@@ -788,331 +1161,331 @@ public class Ventana extends JFrame implements ActionListener{
 	    center_cal.add(new JButton("0"));
 	    center_cal.add(new JButton("."));
 	    center_cal.add(new JButton("/"));
-
+	
 	    calculadora.add(center_cal, BorderLayout.CENTER);
-
+	
 	    JPanel signos = new JPanel();
 	    signos.setBackground(Color.black);
 	    signos.setLayout(new GridLayout(4, 1, 5, 5));
-
+	
 	    signos.add(new JButton("X"));
 	    signos.add(new JButton("+"));
 	    signos.add(new JButton("-"));
 	    signos.add(new JButton("="));
-
+	
 	    calculadora.add(signos, BorderLayout.EAST);
 	    
 	    
 	}
 	
 	public void CalculadoraIntereses() {
-
+	
 	    JPanel calculadora = new JPanel();
 	    calculadora.setSize(1000, 500);
 	    calculadora.setLocation(100, 50);
 	    calculadora.setBackground(Color.white);
 	    calculadora.setLayout(new BorderLayout(20,20));
 	    this.add(calculadora);
-
-
+	
+	
 	    JLabel title = new JLabel("INTERÉS");
 	    title.setFont(new Font("Arial", Font.BOLD, 26));
 	    title.setForeground(Color.red);
 	    title.setHorizontalAlignment(JLabel.CENTER);
 	    calculadora.add(title, BorderLayout.NORTH);
-
+	
 	    
 	    JPanel datos = new JPanel();
 	    datos.setBackground(new Color(120,230,100));
 	    datos.setLayout(new BorderLayout(10,10));
-
+	
 	    calculadora.add(datos, BorderLayout.CENTER);
-
+	
 	    JLabel subtitulo = new JLabel("Calcular interés");
 	    subtitulo.setFont(new Font("Arial", Font.BOLD, 20));
-
+	
 	    datos.add(subtitulo, BorderLayout.NORTH);
-
-
+	
+	
 	    JPanel campos = new JPanel();
 	    campos.setLayout(new GridLayout(3,2,20,20));
 	    campos.setOpaque(false);
-
+	
 	    JLabel l1 = new JLabel("Capital:");
 	    l1.setFont(new Font("Arial", Font.BOLD, 16));
-
+	
 	    JTextField capital = new JTextField();
 	    capital.setFont(new Font("Arial", Font.PLAIN, 16));
-
+	
 	    JLabel l2 = new JLabel("Tiempo:");
 	    l2.setFont(new Font("Arial", Font.BOLD, 16));
-
+	
 	    JTextField tiempo = new JTextField();
 	    tiempo.setFont(new Font("Arial", Font.PLAIN, 16));
-
+	
 	    JLabel l3 = new JLabel("Tasa interés:");
 	    l3.setFont(new Font("Arial", Font.BOLD, 16));
-
+	
 	    JTextField tasa = new JTextField();
 	    tasa.setFont(new Font("Arial", Font.PLAIN, 16));
-
+	
 	    campos.add(l1);
 	    campos.add(capital);
-
+	
 	    campos.add(l2);
 	    campos.add(tiempo);
-
+	
 	    campos.add(l3);
 	    campos.add(tasa);
-
+	
 	    datos.add(campos, BorderLayout.CENTER);
-
-
+	
+	
 	    JPanel botones = new JPanel(new FlowLayout());
 	    botones.setOpaque(false);
-
+	
 	    JButton calcular = new JButton("Calcular");
 	    JButton cancelar = new JButton("Cancelar");
-
+	
 	    botones.add(calcular);
 	    botones.add(cancelar);
-
+	
 	    datos.add(botones, BorderLayout.SOUTH);
-
+	
 	    JPanel resultados = new JPanel();
 	    resultados.setLayout(new GridLayout(2,2,20,10));
 	    resultados.setBackground(new Color(240,120,110));
-
+	
 	    JLabel r1 = new JLabel("Interés:");
 	    r1.setFont(new Font("Arial", Font.BOLD, 16));
-
+	
 	    JTextField interes = new JTextField();
 	    interes.setEditable(false);
-
+	
 	    JLabel r2 = new JLabel("Monto:");
 	    r2.setFont(new Font("Arial", Font.BOLD, 16));
-
+	
 	    JTextField monto = new JTextField();
 	    monto.setEditable(false);
-
+	
 	    resultados.add(r1);
 	    resultados.add(interes);
-
+	
 	    resultados.add(r2);
 	    resultados.add(monto);
-
+	
 	    calculadora.add(resultados, BorderLayout.SOUTH);
-
+	
 	    setVisible(true);
 	}
 	
 	public void pintar() {
 		
 		JPanel pane = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                Graphics2D g2d = (Graphics2D) g;
-                
-                g2d.drawLine(0,0,100,100);
-                
-                g2d.setStroke(new BasicStroke(3));
-                g2d.setColor(Color.red);
-                
-                g2d.drawLine(200,  200,  500, 200);
-                
-                g2d.drawRect(250, 250, 100, 100);
-                
-                g2d.setColor(Color.green);
-                
-                g2d.drawOval(400, 100, 90, 30);
-                
-                g2d.setStroke(new BasicStroke(5));
-                
-                g2d.drawArc(300, 100, 100, 100, 0, 270);
-                
-                g2d.drawPolygon(new int [] {200,100,300},new int [] {100,300,500},3);
-                
-                g2d.setColor(Color.orange);
-                
-                g2d.fillRect(500,  300, 100, 100);
-                
-                g2d.fillOval(400, 200, 100, 100);
-                
-                g2d.fillArc(300, 300, 100, 100, 90, 90);
-                
-                g2d.fillPolygon(new int [] {400,300,500},new int [] {200,300,500},3);
-                
-                try {
+	        @Override
+	        protected void paintComponent(Graphics g) {
+	            super.paintComponent(g);
+	            Graphics2D g2d = (Graphics2D) g;
+	            
+	            g2d.drawLine(0,0,100,100);
+	            
+	            g2d.setStroke(new BasicStroke(3));
+	            g2d.setColor(Color.red);
+	            
+	            g2d.drawLine(200,  200,  500, 200);
+	            
+	            g2d.drawRect(250, 250, 100, 100);
+	            
+	            g2d.setColor(Color.green);
+	            
+	            g2d.drawOval(400, 100, 90, 30);
+	            
+	            g2d.setStroke(new BasicStroke(5));
+	            
+	            g2d.drawArc(300, 100, 100, 100, 0, 270);
+	            
+	            g2d.drawPolygon(new int [] {200,100,300},new int [] {100,300,500},3);
+	            
+	            g2d.setColor(Color.orange);
+	            
+	            g2d.fillRect(500,  300, 100, 100);
+	            
+	            g2d.fillOval(400, 200, 100, 100);
+	            
+	            g2d.fillArc(300, 300, 100, 100, 90, 90);
+	            
+	            g2d.fillPolygon(new int [] {400,300,500},new int [] {200,300,500},3);
+	            
+	            try {
 					BufferedImage image = ImageIO.read(new File ("src/imagenes/pacman.png"));
 					g2d.drawImage(image, 500, 9, null);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-            
-            }
-        };
-
-       pane.setSize(1200,700);
-       pane.setLocation(0,0);
-       this.add(pane);
+	        
+	        }
+	    };
+	
+	   pane.setSize(1200,700);
+	   pane.setLocation(0,0);
+	   this.add(pane);
 	}
 	
 	public void casa() {
 		JPanel pane = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                Graphics2D g2d = (Graphics2D) g;
-                
-                g2d.setStroke(new BasicStroke(50));
-                g2d.setColor(Color.decode("#453200"));             
-                g2d.drawLine(0,620,1200,620);
-                
-                g2d.setStroke(new BasicStroke(40));
-                g2d.setColor(Color.decode("#00AB12"));             
-                g2d.drawLine(0,580,1200,580);
-                
-                g2d.setColor(Color.decode("#00996C"));     
-                g2d.fillRect(330,  210, 570, 350);
-                
-                g2d.setColor(Color.decode("#00DB99"));     
-                g2d.fillRect(350,  230, 530, 330);
-                
-                g2d.setColor(Color.decode("#5C8065"));     
-                g2d.drawLine(330,  190, 900, 190);
-                
-                g2d.setStroke(new BasicStroke(50));
-                g2d.setColor(Color.decode("#FFBE1A"));     
-                g2d.drawLine(925, 410, 925, 535);
-                
-                g2d.setStroke(new BasicStroke(15));
-                g2d.setColor(Color.decode("#D18600"));     
-                g2d.drawLine(907, 390, 942, 390);
-                
-                g2d.setStroke(new BasicStroke(10));
-                g2d.setColor(Color.decode("#D18600"));     
-                g2d.drawLine(915, 380, 932, 380);
-                
-                g2d.setStroke(new BasicStroke(7));
-                g2d.setColor(Color.white);     
-                g2d.drawLine(905, 371, 920, 371);
-                
-                g2d.setColor(Color.white);     
-                g2d.fillRect(400,  280, 160, 160);
-                
-                g2d.setColor(Color.decode("#99FFE9"));     
-                g2d.fillRect(410,  290, 60, 140);
-                
-                g2d.setColor(Color.decode("#99FFE9"));     
-                g2d.fillRect(490,  290, 60, 140);
-                
-                g2d.setStroke(new BasicStroke(20));
-                g2d.setColor(Color.decode("#00BF67"));     
-                g2d.drawLine(400, 450, 560, 450);
-                
-                g2d.setStroke(new BasicStroke(15));
-                g2d.setColor(Color.decode("#B57900"));             
-                g2d.drawLine(0,480,1200,480);
-                
-                g2d.setColor(Color.decode("#B57900"));             
-                g2d.drawLine(0,510,1200,510);
-                
-                g2d.setColor(Color.decode("#B57900"));             
-                g2d.drawLine(0,540,1200,540);
-                
-                g2d.setStroke(new BasicStroke(10));
-                g2d.setColor(Color.decode("#D19C32"));             
-                g2d.drawLine(420,465,420,555);
-                
-                g2d.setColor(Color.decode("#D19C32"));             
-                g2d.drawLine(10,465,10,555);
-                
-                g2d.setColor(Color.decode("#D19C32"));             
-                g2d.drawLine(60,465,60,555);
-                
-                g2d.setColor(Color.decode("#D19C32"));             
-                g2d.drawLine(120,465,120,555);
-                
-                g2d.setColor(Color.decode("#D19C32"));             
-                g2d.drawLine(180,465,180,555);
-                
-                g2d.setColor(Color.decode("#D19C32"));             
-                g2d.drawLine(240,465,240,555);
-                
-                g2d.setColor(Color.decode("#D19C32"));             
-                g2d.drawLine(300,465,300,555);
-                
-                g2d.setColor(Color.decode("#D19C32"));             
-                g2d.drawLine(360,465,360,555);
-                
-                g2d.setColor(Color.decode("#D19C32"));             
-                g2d.drawLine(480,465,480,555);
-                
-                g2d.setColor(Color.decode("#D19C32"));             
-                g2d.drawLine(540,465,540,555);
-                
-                g2d.setColor(Color.decode("#D19C32"));             
-                g2d.drawLine(600,465,600,555);
-                
-                g2d.setColor(Color.decode("#D19C32"));             
-                g2d.drawLine(660,465,660,555);
-                
-                g2d.setColor(Color.decode("#D19C32"));             
-                g2d.drawLine(720,465,720,555);
-                
-                g2d.setColor(Color.decode("#D19C32"));             
-                g2d.drawLine(780,465,780,555);
-                
-                g2d.setColor(Color.decode("#D19C32"));             
-                g2d.drawLine(840,465,840,555);
-                
-                g2d.setColor(Color.decode("#D19C32"));             
-                g2d.drawLine(900,465,900,555);
-                
-                g2d.setColor(Color.decode("#D19C32"));             
-                g2d.drawLine(960,465,960,555);
-                
-                g2d.setColor(Color.decode("#D19C32"));             
-                g2d.drawLine(1000,465,1000,555);
-                
-                g2d.setColor(Color.decode("#D19C32"));             
-                g2d.drawLine(1060,465,1060,555);
-                
-                g2d.setColor(Color.decode("#D19C32"));             
-                g2d.drawLine(1120,465,1120,555);
-                
-                g2d.setColor(Color.decode("#D19C32"));             
-                g2d.drawLine(1180,465,1180,555);
-                
-                g2d.setColor(Color.gray);     
-                g2d.fillRect(650,  311, 140, 250);
-                
-                g2d.setColor(Color.white);     
-                g2d.fillRect(665, 325, 110, 220);
-                
-                g2d.setColor(Color.yellow);     
-                g2d.fillRect(750,  420, 13, 20);
-                
-                g2d.setStroke(new BasicStroke(7));
-                g2d.setColor(Color.decode("#D6D6D6"));             
-                g2d.drawLine(360,166,360,110);
-                
-                g2d.setColor(Color.decode("#D6D6D6"));             
-                g2d.drawLine(390,166,390,140);
-                
-                g2d.setColor(Color.black);     
-                g2d.fillRect(780, 90, 70, 80);
-                
-                g2d.setStroke(new BasicStroke(15));
-                g2d.setColor(Color.black);             
-                g2d.drawLine(800,85,827,85);
-                
-                g2d.setColor(Color.white);             
-                g2d.drawLine(800,120,827,120);
-                
-            }
+	        @Override
+	        protected void paintComponent(Graphics g) {
+	            super.paintComponent(g);
+	            Graphics2D g2d = (Graphics2D) g;
+	            
+	            g2d.setStroke(new BasicStroke(50));
+	            g2d.setColor(Color.decode("#453200"));             
+	            g2d.drawLine(0,620,1200,620);
+	            
+	            g2d.setStroke(new BasicStroke(40));
+	            g2d.setColor(Color.decode("#00AB12"));             
+	            g2d.drawLine(0,580,1200,580);
+	            
+	            g2d.setColor(Color.decode("#00996C"));     
+	            g2d.fillRect(330,  210, 570, 350);
+	            
+	            g2d.setColor(Color.decode("#00DB99"));     
+	            g2d.fillRect(350,  230, 530, 330);
+	            
+	            g2d.setColor(Color.decode("#5C8065"));     
+	            g2d.drawLine(330,  190, 900, 190);
+	            
+	            g2d.setStroke(new BasicStroke(50));
+	            g2d.setColor(Color.decode("#FFBE1A"));     
+	            g2d.drawLine(925, 410, 925, 535);
+	            
+	            g2d.setStroke(new BasicStroke(15));
+	            g2d.setColor(Color.decode("#D18600"));     
+	            g2d.drawLine(907, 390, 942, 390);
+	            
+	            g2d.setStroke(new BasicStroke(10));
+	            g2d.setColor(Color.decode("#D18600"));     
+	            g2d.drawLine(915, 380, 932, 380);
+	            
+	            g2d.setStroke(new BasicStroke(7));
+	            g2d.setColor(Color.white);     
+	            g2d.drawLine(905, 371, 920, 371);
+	            
+	            g2d.setColor(Color.white);     
+	            g2d.fillRect(400,  280, 160, 160);
+	            
+	            g2d.setColor(Color.decode("#99FFE9"));     
+	            g2d.fillRect(410,  290, 60, 140);
+	            
+	            g2d.setColor(Color.decode("#99FFE9"));     
+	            g2d.fillRect(490,  290, 60, 140);
+	            
+	            g2d.setStroke(new BasicStroke(20));
+	            g2d.setColor(Color.decode("#00BF67"));     
+	            g2d.drawLine(400, 450, 560, 450);
+	            
+	            g2d.setStroke(new BasicStroke(15));
+	            g2d.setColor(Color.decode("#B57900"));             
+	            g2d.drawLine(0,480,1200,480);
+	            
+	            g2d.setColor(Color.decode("#B57900"));             
+	            g2d.drawLine(0,510,1200,510);
+	            
+	            g2d.setColor(Color.decode("#B57900"));             
+	            g2d.drawLine(0,540,1200,540);
+	            
+	            g2d.setStroke(new BasicStroke(10));
+	            g2d.setColor(Color.decode("#D19C32"));             
+	            g2d.drawLine(420,465,420,555);
+	            
+	            g2d.setColor(Color.decode("#D19C32"));             
+	            g2d.drawLine(10,465,10,555);
+	            
+	            g2d.setColor(Color.decode("#D19C32"));             
+	            g2d.drawLine(60,465,60,555);
+	            
+	            g2d.setColor(Color.decode("#D19C32"));             
+	            g2d.drawLine(120,465,120,555);
+	            
+	            g2d.setColor(Color.decode("#D19C32"));             
+	            g2d.drawLine(180,465,180,555);
+	            
+	            g2d.setColor(Color.decode("#D19C32"));             
+	            g2d.drawLine(240,465,240,555);
+	            
+	            g2d.setColor(Color.decode("#D19C32"));             
+	            g2d.drawLine(300,465,300,555);
+	            
+	            g2d.setColor(Color.decode("#D19C32"));             
+	            g2d.drawLine(360,465,360,555);
+	            
+	            g2d.setColor(Color.decode("#D19C32"));             
+	            g2d.drawLine(480,465,480,555);
+	            
+	            g2d.setColor(Color.decode("#D19C32"));             
+	            g2d.drawLine(540,465,540,555);
+	            
+	            g2d.setColor(Color.decode("#D19C32"));             
+	            g2d.drawLine(600,465,600,555);
+	            
+	            g2d.setColor(Color.decode("#D19C32"));             
+	            g2d.drawLine(660,465,660,555);
+	            
+	            g2d.setColor(Color.decode("#D19C32"));             
+	            g2d.drawLine(720,465,720,555);
+	            
+	            g2d.setColor(Color.decode("#D19C32"));             
+	            g2d.drawLine(780,465,780,555);
+	            
+	            g2d.setColor(Color.decode("#D19C32"));             
+	            g2d.drawLine(840,465,840,555);
+	            
+	            g2d.setColor(Color.decode("#D19C32"));             
+	            g2d.drawLine(900,465,900,555);
+	            
+	            g2d.setColor(Color.decode("#D19C32"));             
+	            g2d.drawLine(960,465,960,555);
+	            
+	            g2d.setColor(Color.decode("#D19C32"));             
+	            g2d.drawLine(1000,465,1000,555);
+	            
+	            g2d.setColor(Color.decode("#D19C32"));             
+	            g2d.drawLine(1060,465,1060,555);
+	            
+	            g2d.setColor(Color.decode("#D19C32"));             
+	            g2d.drawLine(1120,465,1120,555);
+	            
+	            g2d.setColor(Color.decode("#D19C32"));             
+	            g2d.drawLine(1180,465,1180,555);
+	            
+	            g2d.setColor(Color.gray);     
+	            g2d.fillRect(650,  311, 140, 250);
+	            
+	            g2d.setColor(Color.white);     
+	            g2d.fillRect(665, 325, 110, 220);
+	            
+	            g2d.setColor(Color.yellow);     
+	            g2d.fillRect(750,  420, 13, 20);
+	            
+	            g2d.setStroke(new BasicStroke(7));
+	            g2d.setColor(Color.decode("#D6D6D6"));             
+	            g2d.drawLine(360,166,360,110);
+	            
+	            g2d.setColor(Color.decode("#D6D6D6"));             
+	            g2d.drawLine(390,166,390,140);
+	            
+	            g2d.setColor(Color.black);     
+	            g2d.fillRect(780, 90, 70, 80);
+	            
+	            g2d.setStroke(new BasicStroke(15));
+	            g2d.setColor(Color.black);             
+	            g2d.drawLine(800,85,827,85);
+	            
+	            g2d.setColor(Color.white);             
+	            g2d.drawLine(800,120,827,120);
+	        
+	        }
 		};
 		
 		pane.setSize(1200,700);
@@ -1258,45 +1631,45 @@ public class Ventana extends JFrame implements ActionListener{
 	
 	public void pintarMarioBros() {
 		JPanel pane = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                Graphics2D g2d = (Graphics2D) g;
-                
-                g2d.setColor(Color.decode("#1E8E00"));
+	        @Override
+	        protected void paintComponent(Graphics g) {
+	            super.paintComponent(g);
+	            Graphics2D g2d = (Graphics2D) g;
+	            
+	            g2d.setColor(Color.decode("#1E8E00"));
 	            g2d.fillOval(120, 520, 80, 80);
 	            g2d.fillOval(160, 500, 90, 90);
 	            g2d.fillOval(210, 520, 80, 80);
-                
-                g2d.setStroke(new BasicStroke(2));
-                g2d.setColor(Color.decode("#ffc3ac"));     
-                g2d.fillRect(30, 580, 1155, 150);
-                g2d.setColor(Color.BLACK);
-                g2d.drawRect(30, 580, 1155, 150);
-                
-                g2d.setColor(Color.black);
-                g2d.fillRoundRect(530, 340, 180, 240, 15, 15);
-                
-                g2d.setColor(Color.decode("#54D6FF"));
-                g2d.fillRoundRect(500, 300, 180, 280, 15, 15);
-                g2d.setColor(Color.BLACK);
-                g2d.drawRoundRect(500, 300, 180, 280, 15, 15);
-                g2d.setStroke(new BasicStroke(10));
-                g2d.setColor(Color.decode("#82E6FF"));
-                g2d.drawLine(676, 307, 676, 574);
-                g2d.setStroke(new BasicStroke(7));
-                g2d.drawLine(480, 576, 676, 576);
-                
-                g2d.setStroke(new BasicStroke(2));
-                g2d.setColor(Color.black);
-                g2d.fillRoundRect(450, 410, 180, 170, 15, 15);
-                
-                g2d.setColor(Color.decode("#ffc3ac"));
-                g2d.fillRoundRect(400, 380, 180, 200, 15, 15);
-                g2d.setColor(Color.BLACK);
-                g2d.drawRoundRect(400, 380, 180, 200, 15, 15);
-                
-                g2d.setColor(Color.lightGray);
+	            
+	            g2d.setStroke(new BasicStroke(2));
+	            g2d.setColor(Color.decode("#ffc3ac"));     
+	            g2d.fillRect(30, 580, 1155, 150);
+	            g2d.setColor(Color.BLACK);
+	            g2d.drawRect(30, 580, 1155, 150);
+	            
+	            g2d.setColor(Color.black);
+	            g2d.fillRoundRect(530, 340, 180, 240, 15, 15);
+	            
+	            g2d.setColor(Color.decode("#54D6FF"));
+	            g2d.fillRoundRect(500, 300, 180, 280, 15, 15);
+	            g2d.setColor(Color.BLACK);
+	            g2d.drawRoundRect(500, 300, 180, 280, 15, 15);
+	            g2d.setStroke(new BasicStroke(10));
+	            g2d.setColor(Color.decode("#82E6FF"));
+	            g2d.drawLine(676, 307, 676, 574);
+	            g2d.setStroke(new BasicStroke(7));
+	            g2d.drawLine(480, 576, 676, 576);
+	            
+	            g2d.setStroke(new BasicStroke(2));
+	            g2d.setColor(Color.black);
+	            g2d.fillRoundRect(450, 410, 180, 170, 15, 15);
+	            
+	            g2d.setColor(Color.decode("#ffc3ac"));
+	            g2d.fillRoundRect(400, 380, 180, 200, 15, 15);
+	            g2d.setColor(Color.BLACK);
+	            g2d.drawRoundRect(400, 380, 180, 200, 15, 15);
+	            
+	            g2d.setColor(Color.lightGray);
 	            g2d.fillOval(510, 310, 15, 15);
 	            g2d.fillOval(650, 310, 15, 15);
 	            g2d.fillOval(650, 560, 15, 15);
@@ -1323,29 +1696,29 @@ public class Ventana extends JFrame implements ActionListener{
 		        g2d.fillRect(820, 400, 130, 50);
 		        
 		        g2d.setColor(Color.black);
-                g2d.drawRect(830, 450, 110, 130);
-                g2d.drawRect(820, 400, 130, 50);
-                
-                g2d.setColor(Color.decode("#C4FEFF"));
-                g2d.fillRect(822, 403, 20, 45);
-                g2d.fillRect(833, 453, 10, 124);
-                
-                g2d.setColor(Color.decode("#00541B"));
-                g2d.fillRect(890, 403, 15, 45);
-                g2d.fillRect(890, 453, 15, 124);
-                
-                g2d.setColor(Color.decode("#00300E"));
-                g2d.fillRect(900, 403, 48, 45);
-                g2d.fillRect(900, 453, 38, 124);
-                
-                g2d.setColor(Color.decode("#00C853"));
-                g2d.fillRoundRect(1050, 400, 180, 180, 15, 15);
-
-                g2d.setStroke(new BasicStroke(3));
-                g2d.setColor(Color.BLACK);
-                g2d.drawRoundRect(1050, 400, 180, 180, 15, 15);
-                
-                g2d.setColor(Color.lightGray);
+	            g2d.drawRect(830, 450, 110, 130);
+	            g2d.drawRect(820, 400, 130, 50);
+	            
+	            g2d.setColor(Color.decode("#C4FEFF"));
+	            g2d.fillRect(822, 403, 20, 45);
+	            g2d.fillRect(833, 453, 10, 124);
+	            
+	            g2d.setColor(Color.decode("#00541B"));
+	            g2d.fillRect(890, 403, 15, 45);
+	            g2d.fillRect(890, 453, 15, 124);
+	            
+	            g2d.setColor(Color.decode("#00300E"));
+	            g2d.fillRect(900, 403, 48, 45);
+	            g2d.fillRect(900, 453, 38, 124);
+	            
+	            g2d.setColor(Color.decode("#00C853"));
+	            g2d.fillRoundRect(1050, 400, 180, 180, 15, 15);
+	
+	            g2d.setStroke(new BasicStroke(3));
+	            g2d.setColor(Color.BLACK);
+	            g2d.drawRoundRect(1050, 400, 180, 180, 15, 15);
+	            
+	            g2d.setColor(Color.lightGray);
 	            g2d.fillOval(1060, 410, 15, 15);
 	            g2d.fillOval(1060, 560, 15, 15);
 	            
@@ -1362,12 +1735,12 @@ public class Ventana extends JFrame implements ActionListener{
 	            g2d.fillRect(1050, 200, 50, 50);
 	            
 	            g2d.setColor(Color.black);
-                g2d.drawRect(250, 100, 50, 50);
-                g2d.drawRect(300, 100, 50, 50);
-                g2d.drawRect(100, 300, 50, 50);
-                g2d.drawRect(1050, 200, 50, 50);
-                
-                g2d.setColor(Color.BLACK);
+	            g2d.drawRect(250, 100, 50, 50);
+	            g2d.drawRect(300, 100, 50, 50);
+	            g2d.drawRect(100, 300, 50, 50);
+	            g2d.drawRect(1050, 200, 50, 50);
+	            
+	            g2d.setColor(Color.BLACK);
 		        g2d.fillOval(255, 105, 5, 5);
 		        g2d.fillOval(289, 105, 5, 5);
 		        g2d.fillOval(255, 139, 5, 5);
@@ -1387,17 +1760,17 @@ public class Ventana extends JFrame implements ActionListener{
 		        g2d.fillOval(1089, 205, 5, 5);
 		        g2d.fillOval(1055, 239, 5, 5);
 		        g2d.fillOval(1089, 239, 5, 5);
-                
 	            
 	            
-            }
+	            
+	        }
 		};
 		
 		pane.setSize(1200,700);
 	    pane.setLocation(0,0);
 	    pane.setBackground(Color.decode("#C4FEFF"));
-	    this.add(pane);
+		    this.add(pane);
+		}
+		
 	}
-	
-}
 
