@@ -20,10 +20,16 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class AuthView {
+import controller.AuthController;
+import model.AuthModel;
 
-	public AuthView(){
-		
+public class AuthView {
+	private AuthModel model;
+	private AuthController controller;
+
+	public AuthView(AuthController controller, AuthModel model){
+	    this.controller = controller;
+	    this.model = model;
 	}
 	
 	public void loginView() {
@@ -79,39 +85,37 @@ public class AuthView {
 		contra.setLocation(30, 220);
 		contra.setFont(new Font("Arial", Font.BOLD, 18));
 		contenedor.add(contra);
-		
+
+
 		acceder.addActionListener(new ActionListener() {
-	
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String username_val = username.getText();
-				String contra_val = new String (contra.getPassword());
-				
-				String user_correct = "Isaac";
-				String contra_correct = "1206";
-				
-				if(username_val.equals("")) {
-					username.setBorder(BorderFactory.createLineBorder(Color.red,3,true));
-				} else {
-					username.setBorder(BorderFactory.createLineBorder(Color.green,3,true));
-				}
-				
-				if (contra_val.equals("")) {
-					contra.setBorder(BorderFactory.createLineBorder(Color.red,3,true));
-				} else {
-					contra.setBorder(BorderFactory.createLineBorder(Color.green,3,true));
-				}
-				
-				if (username_val.equals(user_correct) && contra_val.equals(contra_correct)) {
-					JOptionPane.showMessageDialog(null, "Bienvenido " + username_val);
-				} else {
-					JOptionPane.showMessageDialog(null, "Error al iniciar sesión!");
-				}
-				
-				
-				
-			}
-		});
+
+	    @Override
+	    public void actionPerformed(ActionEvent e) {
+
+	        String username_val = username.getText();
+	        String contra_val = new String(contra.getPassword());
+
+	        boolean valid = controller.login(username_val, contra_val);
+
+	        if(username_val.equals("")) {
+	            username.setBorder(BorderFactory.createLineBorder(Color.red,3,true));
+	        } else {
+	            username.setBorder(BorderFactory.createLineBorder(Color.green,3,true));
+	        }
+
+	        if (contra_val.equals("")) {
+	            contra.setBorder(BorderFactory.createLineBorder(Color.red,3,true));
+	        } else {
+	            contra.setBorder(BorderFactory.createLineBorder(Color.green,3,true));
+	        }
+
+	        if(valid) {
+	            JOptionPane.showMessageDialog(null, "Bienvenido " + username_val);
+	        } else {
+	            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
+	        }
+	    }
+	});
 		
 		JButton registro = new JButton("¿Aun no tienes cuenta?");
 		registro.setLocation(100, 430);

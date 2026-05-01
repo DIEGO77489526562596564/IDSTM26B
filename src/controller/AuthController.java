@@ -1,16 +1,23 @@
 package controller;
 
+import model.AuthModel;
 import views.AuthView;
 
 public class AuthController {
-	
-	private AuthView vista;
 
-	public AuthController(){
-		vista = new AuthView();
-	}
-	
-	public void showLogin() {
-		vista.loginView();
-	}
+    private AuthView vista;
+    private AuthModel modelo;
+
+    public AuthController() {
+        modelo = new AuthModel();
+        vista = new AuthView(this, modelo);
+    }
+
+    public void showLogin() {
+        vista.loginView();
+    }
+
+    public boolean login(String user, String pass) {
+        return modelo.acces(user, pass);
+    }
 }
