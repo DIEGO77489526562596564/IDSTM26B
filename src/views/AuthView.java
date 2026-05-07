@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 
 import controller.AuthController;
 import model.AuthModel;
+import model.RegistroModel;
 
 public class AuthView {
 	private AuthModel model;
@@ -31,6 +32,7 @@ public class AuthView {
 	    this.controller = controller;
 	    this.model = model;
 	}
+	
 	
 	public void loginView() {
 		
@@ -301,26 +303,38 @@ public class AuthView {
 		register_container.add(crear_cuenta);
 		
 		crear_cuenta.addActionListener(new ActionListener() {
-	
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String username_val = user_nombre.getText();
-				String bio_val = bio.getText();
-				
-				if(username_val.equals("")) {
-					user_nombre.setBorder(BorderFactory.createLineBorder(Color.red,3,true));
-				} else {
-					user_nombre.setBorder(BorderFactory.createLineBorder(Color.green,3,true));
-				}
-				
-				if (bio_val.equals("")) {
-					bio.setBorder(BorderFactory.createLineBorder(Color.red,3,true));
-				} else {
-					bio.setBorder(BorderFactory.createLineBorder(Color.green,3,true));
-				}
-				
+
+			    String username_val = user_nombre.getText();
+			    String bio_val = bio.getText();
+
+			    if(username_val.equals("")) {
+			        user_nombre.setBorder(BorderFactory.createLineBorder(Color.red,3,true));
+			    } else {
+			        user_nombre.setBorder(BorderFactory.createLineBorder(Color.green,3,true));
+			    }
+
+			    if(bio_val.equals("")) {
+			        bio.setBorder(BorderFactory.createLineBorder(Color.red,3,true));
+			    } else {
+			        bio.setBorder(BorderFactory.createLineBorder(Color.green,3,true));
+			    }
+
+			    if(!username_val.equals("") && !bio_val.equals("")) {
+
+			        RegistroModel model = new RegistroModel();
+
+			        boolean ok = model.registrar(username_val, bio_val);
+
+			        if(ok) {
+			            JOptionPane.showMessageDialog(null, "Cuenta creada");
+			        } else {
+			            JOptionPane.showMessageDialog(null, "Error al registrar");
+			        }
+			    }
 			}
-			
 		});
 		
 		JButton login = new JButton("cancelar");

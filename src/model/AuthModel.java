@@ -11,7 +11,7 @@ public class AuthModel {
 	
 	public AuthModel() {
 		
-		try { conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tu_base_datos","root","");
+		try { conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/programacion","root","educadex2026");
 			
 		}catch(Exception e){
 			System.out.println("Error de conexion: " + e.getMessage());
@@ -19,23 +19,31 @@ public class AuthModel {
 		
 	}
 	
-	public boolean acces(String email, String password) {
-		 try {
-	            String sql = "SELECT * FROM usuarios WHERE username = ? AND password = ?";
+	public boolean acces(String user, String password) {
 
-	            PreparedStatement pass = conn.prepareStatement(sql);
-	            pass.setString(1, email);
-	            pass.setString(2, password);
+	    try {
 
-	            ResultSet rs = pass.executeQuery();
+	        String sql = "SELECT * FROM admin WHERE username = ? AND `password` = ?";
 
-	            return rs.next();
+	        PreparedStatement pass = conn.prepareStatement(sql);
 
-	        } catch (Exception e) {
-	            System.out.println("Error query: " + e.getMessage());
+	        pass.setString(1, user);
+	        pass.setString(2, password);
+
+	        ResultSet rs = pass.executeQuery();
+
+	        if(rs.next()) {
+	            System.out.println("SI EXISTE");
+	            return true;
+	        } else {
+	            System.out.println("NO EXISTE");
 	        }
 
-	        return false;
+	    } catch (Exception e) {
+	        System.out.println("Error query: " + e.getMessage());
+	    }
+
+	    return false;
 	}
 		
 }
