@@ -1,6 +1,7 @@
 package Main;
 
 import controller.AuthController;
+import views.HomeView;
 
 public class Main {
 
@@ -11,6 +12,7 @@ public class Main {
 		
 		AuthController ac = new AuthController();
 		ac.showLogin();
+		
 	}
 
 }

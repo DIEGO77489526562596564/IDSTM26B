@@ -617,69 +617,7 @@ public class Ventana extends JFrame implements ActionListener{
 	}
 	
 	public void users() {
-		JPanel users = new JPanel();
-		users.setSize(1000, 500);
-		users.setLocation(70, 30);
-		users.setBackground(Color.white);
-		users.setLayout(null);
-		this.add(users);
 		
-		JLabel users_title = new JLabel("USUARIOS");
-		users_title.setBounds(450, 40, 200, 40);
-		users_title.setOpaque(true);
-		users_title.setBackground(Color.white);
-		users_title.setHorizontalAlignment(JLabel.CENTER);
-		users_title.setFont(new Font("Arial", Font.BOLD, 22));
-		users.add(users_title);
-		
-		JButton export = new JButton("Exportar");
-		export.setBounds(50, 90, 100, 40);
-		users.add(export);
-		
-		JButton add = new JButton("Añadir");
-		add.setBounds(155, 90,100, 40);
-		users.add(add);
-		
-		Object [] table_head = {"No. control", "Nombre", "Apellido", "Semestre", "Promedio", "Acciones"};
-		
-		Object [][] table_content = {
-			    {"22150001", "Carlos", "Ramírez", "1", "8.5", "Editar"},
-			    {"22150002", "María", "López", "2", "9.1", "Editar"},
-			    {"22150003", "José", "Hernández", "3", "7.8", "Editar"},
-			    {"22150004", "Ana", "García", "4", "9.5", "Editar"},
-			    {"22150005", "Luis", "Martínez", "5", "8.2", "Editar"},
-			    {"22150006", "Fernanda", "Sánchez", "6", "9.0", "Editar"},
-			    {"22150007", "Miguel", "Torres", "1", "7.5", "Editar"},
-			    {"22150008", "Daniela", "Flores", "2", "8.9", "Editar"},
-			    {"22150009", "Jorge", "Castillo", "3", "6.8", "Editar"},
-			    {"22150010", "Valeria", "Morales", "4", "9.7", "Editar"},
-			    {"22150011", "Ricardo", "Ortiz", "5", "8.0", "Editar"},
-			    {"22150012", "Paola", "Reyes", "6", "9.3", "Editar"},
-			    {"22150013", "Alejandro", "Cruz", "1", "7.9", "Editar"},
-			    {"22150014", "Sofía", "Vargas", "2", "8.6", "Editar"},
-			    {"22150015", "David", "Mendoza", "3", "8.4", "Editar"},
-			    {"22150016", "Camila", "Rojas", "4", "9.2", "Editar"},
-			    {"22150017", "Emmanuel", "Navarro", "5", "7.3", "Editar"},
-			    {"22150018", "Andrea", "Delgado", "6", "9.8", "Editar"},
-			    {"22150019", "Hugo", "Paredes", "1", "6.9", "Editar"},
-			    {"22150020", "Lucía", "Silva", "2", "8.7", "Editar"},
-			    {"22150021", "Brandon", "Campos", "3", "7.6", "Editar"},
-			    {"22150022", "Natalia", "Peña", "4", "9.4", "Editar"},
-			    {"22150023", "Kevin", "Aguilar", "5", "8.1", "Editar"},
-			    {"22150024", "Renata", "Fuentes", "6", "9.6", "Editar"},
-			    {"22150025", "Iván", "Salazar", "1", "7.2", "Editar"}
-			};
-		
-		JTable users_table = new JTable(table_content, table_head);
-		JScrollPane scrollPane = new JScrollPane(users_table);
-		
-		scrollPane.setLocation(50, 150);
-		scrollPane.setSize(800, 240);
-		users.add(scrollPane);
-		
-		
-		
-		users.repaint();
 	}
 	
 	public void newlogin() {

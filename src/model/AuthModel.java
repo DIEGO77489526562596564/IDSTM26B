@@ -6,46 +6,58 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class AuthModel {
-	
-	private Connection conn;
-	
-	public AuthModel() {
-		
-		try { conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/programacion","root","educadex2026");
-			
-		}catch(Exception e){
-			System.out.println("Error de conexion: " + e.getMessage());
-		}
-		
-	}
-	
-	public boolean acces(String user, String password) {
 
-	    try {
+    private Connection conn;
 
-	        String sql = "SELECT * FROM admin WHERE username = ? AND `password` = ?";
+    public AuthModel() {
 
-	        PreparedStatement pass = conn.prepareStatement(sql);
+        try {
 
-	        pass.setString(1, user);
-	        pass.setString(2, password);
+            conn = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/programacion",
+                    "root",
+                    "educadex2026"
+            );
 
-	        ResultSet rs = pass.executeQuery();
 
-	        if(rs.next()) {
-	            System.out.println("SI EXISTE");
-	            return true;
-	        } else {
-	            System.out.println("NO EXISTE");
-	        }
+        } catch(Exception e) {
 
-	    } catch (Exception e) {
-	        System.out.println("Error query: " + e.getMessage());
-	    }
+            System.out.println("Error de conexion: " + e.getMessage());
 
-	    return false;
-	}
-		
+        }
+
+    }
+
+    public boolean acces(String user, String password) {
+
+        try {
+
+            String sql = """
+                SELECT * FROM admin
+                WHERE username = ?
+                AND password = ?
+            """;
+
+            PreparedStatement pass = conn.prepareStatement(sql);
+
+            pass.setString(1, user);
+            pass.setString(2, password);
+
+            ResultSet rs = pass.executeQuery();
+
+            if(rs.next()) {
+
+                return true;
+
+            }
+
+        } catch (Exception e) {
+
+            System.out.println("Error query: " + e.getMessage());
+
+        }
+
+        return false;
+    }
+
 }
-
-

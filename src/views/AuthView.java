@@ -112,12 +112,21 @@ public class AuthView {
 	        }
 
 	        if(valid) {
+
 	            JOptionPane.showMessageDialog(null, "Bienvenido " + username_val);
+
+	            ventana.dispose();
+
+	            HomeView home = new HomeView();
+	            home.HomeView();
+
 	        } else {
+
 	            JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
+
 	        }
 	    }
-	});
+		});
 		
 		JButton registro = new JButton("¿Aun no tienes cuenta?");
 		registro.setLocation(100, 430);
