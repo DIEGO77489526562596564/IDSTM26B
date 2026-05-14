@@ -14,12 +14,13 @@ public class UsersModel {
 
         try {
 
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
             conn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/programacion",
                     "root",
                     "educadex2026"
             );
-
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -59,6 +60,38 @@ public class UsersModel {
         }
 
         return listaUsuarios;
+
+    }
+
+    public boolean registrarUsuario(User u) {
+
+        try {
+
+            String sql = """
+                    INSERT INTO usuarios
+                    (username, password, nombre_completo)
+                    VALUES (?, ?, ?)
+                    """;
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            ps.setString(1, u.getUsername());
+            ps.setString(2, u.getPassword());
+            ps.setString(3, u.getNombreCompleto());
+
+            int filas = ps.executeUpdate();
+
+            ps.close();
+
+            return filas > 0;
+
+        } catch (Exception e) {
+
+            System.out.println(e.getMessage());
+
+        }
+
+        return false;
 
     }
 

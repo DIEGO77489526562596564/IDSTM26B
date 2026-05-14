@@ -44,9 +44,7 @@ public class HomeView {
 		home.addActionListener(e->{
 
 		    ventana.dispose();
-
 		    UsersController users = new UsersController();
-
 		    users.showUsers();
 
 		});

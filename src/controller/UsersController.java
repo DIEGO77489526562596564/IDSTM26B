@@ -20,9 +20,25 @@ public class UsersController {
 
     public void showUsers() {
 
-        ArrayList<User> listaUsuarios = modelo.obtenerUsuarios();
+        vista.TableView();
 
-        vista.TableView(listaUsuarios);
+    }
+
+    public ArrayList<User> obtenerUsuarios() {
+
+        return modelo.obtenerUsuarios();
+
+    }
+
+    public boolean addUser(String correo, String password, String nombre) {
+
+        User u = new User();
+
+        u.setUsername(correo);
+        u.setPassword(password);
+        u.setNombreCompleto(nombre);
+
+        return modelo.registrarUsuario(u);
 
     }
 
