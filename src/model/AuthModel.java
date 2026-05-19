@@ -14,10 +14,10 @@ public class AuthModel {
         try {
 
             conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/programacion",
-                    "root",
-                    "educadex2026"
-            );
+            	    "jdbc:mysql://sql.freedb.tech:3306/freedb_KYAtXxDp",
+            	    "u_UN7DB0",
+            	    "G46pQ1b7U3I0"
+            	);
 
 
         } catch(Exception e) {
